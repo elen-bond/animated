@@ -574,25 +574,33 @@ html, body, * { cursor: none !important; }
   left: -200px;
 }
 
-/* ===== HERO CANVAS ===== */
-.hero { overflow: hidden; }
-#hero-canvas {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none; z-index: 0;
-}
-.hero .container { position: relative; z-index: 1; }
 
 /* ===== BOND EMISSION CIRCLES ===== */
 .bond-circle {
   position: fixed;
-  width: 10px; height: 10px;
+  width: 22px; height: 22px;
   border-radius: 50%;
   background: #0000FF;
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%,-50%);
-  box-shadow: 0 0 6px rgba(0,0,255,0.5);
+  box-shadow: 0 0 12px rgba(0,0,255,0.5), 0 0 24px rgba(0,0,255,0.2);
+}
+/* ===== BOND LANDING EMOJI ===== */
+.bond-land-emoji {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  font-size: 28px;
+  transform: translate(-50%,-50%) scale(0);
+  animation: bondLandPop 1.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
+}
+@keyframes bondLandPop {
+  0%   { opacity: 1; transform: translate(-50%,-50%) scale(0); }
+  35%  { opacity: 1; transform: translate(-50%,-50%) scale(1.4); }
+  60%  { opacity: 1; transform: translate(-50%,-50%) scale(0.9); }
+  75%  { opacity: 1; transform: translate(-50%,-50%) scale(1.05); }
+  100% { opacity: 0; transform: translate(-50%, calc(-50% - 40px)) scale(0.7); }
 }
 
 /* ===== EMOJI POP ===== */
@@ -640,60 +648,61 @@ html, body, * { cursor: none !important; }
   100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty) - 70px)) scale(0.7); }
 }
 
-/* ===== CAMPAIGN SECTION CANVAS ===== */
-.campaigns { position: relative; }
-#campaigns-canvas {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none; z-index: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.campaigns .container { position: relative; z-index: 1; }
 
 /* ===== CAMPAIGN ANIMATED TITLE ===== */
+/* All text starts fully visible — animation overlays on scroll */
 #campaign-title .title-not {
   display: inline;
-  transition: opacity 0.35s ease 0.15s;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 #campaign-title .title-merch-swag {
-  display: inline;
+  display: inline-block;
   position: relative;
-  opacity: 0;
-  transition: opacity 0.35s ease 0.45s;
+  white-space: nowrap;
 }
-#campaign-title .title-merch-swag::after {
-  content: '';
+/* Strikethrough drawn by a real child span (not ::after) so scaleX is reliable */
+#campaign-title .strike-line {
   position: absolute;
-  left: 0; top: 52%;
-  width: 0; height: 3px;
-  background: currentColor;
-  transition: width 0s;
-  opacity: 0.7;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 4px;
+  background: var(--black);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
 }
 #campaign-title .bonds-word {
   display: inline-block;
 }
-/* — Triggered state — */
-#campaign-title.title-animated .title-not { opacity: 0; }
-#campaign-title.title-animated .title-merch-swag { opacity: 1; }
-#campaign-title.title-animated .title-merch-swag::after {
-  width: 100%;
-  transition: width 0.45s ease 0.85s;
+/* ── triggered ── */
+#campaign-title.title-animated .title-not {
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+#campaign-title.title-animated .strike-line {
+  animation: strikeGrow 0.5s cubic-bezier(0.4,0,0.2,1) 0.35s forwards;
+}
+@keyframes strikeGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 #campaign-title.title-animated .bonds-word {
-  animation: bondsLand 0.6s cubic-bezier(0.175,0.885,0.32,1.275) 1.35s both;
+  animation: bondsLand 0.65s cubic-bezier(0.175,0.885,0.32,1.275) 1.0s forwards;
 }
 @keyframes bondsLand {
-  0%   { opacity: 0; transform: scale(2.5) translateY(-12px); }
-  65%  { transform: scale(0.9) translateY(4px); }
-  100% { opacity: 1; transform: scale(1) translateY(0); }
+  0%   { transform: scale(1.9) translateY(-10px); opacity: 0.7; }
+  50%  { transform: scale(0.9) translateY(3px);  opacity: 1; }
+  75%  { transform: scale(1.05) translateY(-1px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 </style>
 </head>
 <body>
-<div id="custom-cursor">🧲</div>
+<div id="custom-cursor">🏛️</div>
 
 <nav id="nav">
   <div class="container">
@@ -712,7 +721,6 @@ html, body, * { cursor: none !important; }
 
 <!-- HERO -->
 <section class="hero">
-  <canvas id="hero-canvas"></canvas>
   <div class="container">
     <div class="hero-content">
       <div class="hero-tag">strategic business gifting</div>
@@ -778,10 +786,9 @@ html, body, * { cursor: none !important; }
 
 <!-- CAMPAIGN EXAMPLES -->
 <section class="campaigns" id="bonds">
-  <canvas id="campaigns-canvas"></canvas>
   <div class="container">
     <div class="section-label fade-in">Our Campaigns</div>
-    <h2 class="section-title fade-in" id="campaign-title"><span class="title-not">Not </span><span class="title-merch-swag">merch. Swag.</span><span class="bonds-word"> Bonds.</span></h2>
+    <h2 class="section-title" id="campaign-title"><span class="title-not">Not </span><span class="title-merch-swag">Merch. Swag.<span class="strike-line"></span></span><span class="bonds-word"> Bonds.</span></h2>
     <p class="section-sub fade-in">Every campaign is a custom creative concept designed around your brand, your audience, and the relationship you want to build.</p>
     <div class="campaign-grid">
 
@@ -1064,7 +1071,7 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
 
   // ─── CUSTOM CURSOR ────────────────────────────────────────────
   const cursor = document.getElementById('custom-cursor');
-  let sectionCursor = '🧲';
+  let sectionCursor = '🏛️';
 
   function setCursor(e) { cursor.textContent = e; }
   function setSection(e) { sectionCursor = e; setCursor(e); }
@@ -1073,16 +1080,15 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
   document.addEventListener('mousemove', function(e) {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top  = e.clientY + 'px';
-    if (heroNet) heroNet.setMouse(e.clientX, e.clientY);
   });
 
   // Section cursors via IntersectionObserver (50% threshold)
   var sectionMap = [
-    ['.hero',         '🧲'],
+    ['.hero',         '🏛️'],
     ['.manifesto',    '🤝'],
     ['.use-cases',    '🤝'],
     ['.e2e-strip',    '🚲'],
-    ['.campaigns',    '💣'],
+    ['.campaigns',    '🤝'],
     ['.how-section',  '🏛️'],
     ['.scope-section','🤝'],
     ['.pricing',      '💵'],
@@ -1126,24 +1132,13 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
   // ─── CAMPAIGN CTA BUTTON ──────────────────────────────────────
   var campCta = document.querySelector('.campaign-cta .btn-round-cta');
   if (campCta) {
-    campCta.addEventListener('mouseenter', function() {
-      setCursor('🏛️');
-      if (campNet) { campNet.el.style.opacity = '1'; }
-      startCampBonds(campCta);
-    });
-    campCta.addEventListener('mouseleave', function() {
-      restore();
-      stopBonds();
-      if (campNet) {
-        campNet.el.style.opacity = '0';
-        campNet.resetAll();
-      }
-    });
+    campCta.addEventListener('mouseenter', function() { setCursor('🫣'); });
+    campCta.addEventListener('mouseleave', restore);
   }
 
   // ─── CAMPAIGN CARDS EMOJI POP ─────────────────────────────────
   var campCards = document.querySelectorAll('.campaign-card');
-  var cardEmojis = ['🍄','🧯','🗿'];
+  var cardEmojis = ['🤤','🔥','🗿'];
   campCards.forEach(function(card, i) {
     var em = cardEmojis[i] || '🎁';
     card.addEventListener('mouseenter', function() {
@@ -1182,202 +1177,8 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
   }
 
   // ================================================================
-  // HERO NETWORK CANVAS
-  // ================================================================
-  var heroNet = null;
-
-  function HeroNetwork() {
-    this.el = document.getElementById('hero-canvas');
-    if (!this.el) return;
-    this.ctx = this.el.getContext('2d');
-    this.dots = [];
-    this.mx = -9999; this.my = -9999;
-    this._resize();
-    window.addEventListener('resize', this._resize.bind(this));
-    this._buildDots();
-    this._raf = requestAnimationFrame(this._loop.bind(this));
-  }
-  HeroNetwork.prototype._resize = function() {
-    var hero = document.querySelector('.hero');
-    this.el.width  = hero.offsetWidth;
-    this.el.height = hero.offsetHeight;
-  };
-  HeroNetwork.prototype._buildDots = function() {
-    var w = this.el.width, h = this.el.height;
-    var count = Math.min(90, Math.floor(w * h / 7500));
-    this.dots = [];
-    for (var i = 0; i < count; i++) {
-      var x = Math.random() * w, y = Math.random() * h;
-      this.dots.push({ x:x, y:y, bx:x, by:y, vx:0, vy:0, active:false, at:0 });
-    }
-  };
-  HeroNetwork.prototype.setMouse = function(cx, cy) {
-    var r = this.el.getBoundingClientRect();
-    this.mx = cx - r.left;
-    this.my = cy - r.top;
-  };
-  HeroNetwork.prototype.activate = function(dot) {
-    dot.active = true; dot.at = 90;
-  };
-  HeroNetwork.prototype.getNearest = function(cx, cy, n) {
-    var r = this.el.getBoundingClientRect();
-    var lx = cx - r.left, ly = cy - r.top;
-    return this.dots.slice().sort(function(a,b){
-      return (a.x-lx)*(a.x-lx)+(a.y-ly)*(a.y-ly) -
-             ((b.x-lx)*(b.x-lx)+(b.y-ly)*(b.y-ly));
-    }).slice(0, n);
-  };
-  HeroNetwork.prototype._loop = function() {
-    var ctx = this.ctx, el = this.el, dots = this.dots;
-    var mx = this.mx, my = this.my;
-    ctx.clearRect(0, 0, el.width, el.height);
-
-    for (var i = 0; i < dots.length; i++) {
-      var d = dots[i];
-      var dx = mx - d.x, dy = my - d.y;
-      var dist = Math.sqrt(dx*dx + dy*dy);
-      var mag = 150;
-      if (dist < mag && dist > 1) {
-        var force = ((mag - dist) / mag) * 2.8;
-        d.vx += (dx/dist)*force;
-        d.vy += (dy/dist)*force;
-      }
-      d.vx += (d.bx - d.x) * 0.055;
-      d.vy += (d.by - d.y) * 0.055;
-      d.vx *= 0.80; d.vy *= 0.80;
-      d.x += d.vx;  d.y += d.vy;
-      if (d.at > 0) d.at--;
-      if (d.at === 0) d.active = false;
-    }
-    // Lines
-    for (var i = 0; i < dots.length; i++) {
-      for (var j = i+1; j < dots.length; j++) {
-        var a = dots[i], b = dots[j];
-        var ddx = a.x-b.x, ddy = a.y-b.y;
-        var dd = Math.sqrt(ddx*ddx+ddy*ddy);
-        if (dd < 115) {
-          var al = (1 - dd/115);
-          ctx.beginPath();
-          if (a.active || b.active) {
-            ctx.strokeStyle = 'rgba(0,0,255,' + (al*0.7) + ')';
-            ctx.lineWidth = 1.2;
-          } else {
-            ctx.strokeStyle = 'rgba(145,145,145,' + (al*0.38) + ')';
-            ctx.lineWidth = 0.7;
-          }
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-    // Dots
-    for (var i = 0; i < dots.length; i++) {
-      var d = dots[i];
-      ctx.beginPath();
-      if (d.active) {
-        ctx.shadowBlur = 10; ctx.shadowColor = '#0000FF';
-        ctx.fillStyle = 'rgba(0,0,255,0.85)';
-        ctx.arc(d.x, d.y, 4.5, 0, Math.PI*2);
-      } else {
-        ctx.shadowBlur = 0;
-        ctx.fillStyle = 'rgba(130,130,130,0.55)';
-        ctx.arc(d.x, d.y, 2.5, 0, Math.PI*2);
-      }
-      ctx.fill();
-    }
-    ctx.shadowBlur = 0;
-    this._raf = requestAnimationFrame(this._loop.bind(this));
-  };
-
-  heroNet = new HeroNetwork();
-
-  // ================================================================
   // CAMPAIGNS NETWORK CANVAS
   // ================================================================
-  var campNet = null;
-
-  function CampNetwork() {
-    this.el = document.getElementById('campaigns-canvas');
-    if (!this.el) return;
-    this.ctx = this.el.getContext('2d');
-    this.dots = [];
-    this._resize();
-    window.addEventListener('resize', this._resize.bind(this));
-    this._buildDots();
-    this._raf = requestAnimationFrame(this._loop.bind(this));
-  }
-  CampNetwork.prototype._resize = function() {
-    var sec = document.querySelector('.campaigns');
-    this.el.width  = sec.offsetWidth;
-    this.el.height = sec.offsetHeight;
-  };
-  CampNetwork.prototype._buildDots = function() {
-    var w = this.el.width, h = this.el.height;
-    var count = Math.min(70, Math.floor(w*h/10000));
-    this.dots = [];
-    for (var i = 0; i < count; i++) {
-      this.dots.push({ x: Math.random()*w, y: Math.random()*h, active:false, at:0 });
-    }
-  };
-  CampNetwork.prototype.resetAll = function() {
-    this.dots.forEach(function(d){ d.active=false; d.at=0; });
-  };
-  CampNetwork.prototype.activate = function(dot) {
-    dot.active = true; dot.at = 130;
-  };
-  CampNetwork.prototype.getNearest = function(cx, cy, n) {
-    var r = this.el.getBoundingClientRect();
-    var lx = cx-r.left, ly = cy-r.top;
-    return this.dots.slice().sort(function(a,b){
-      return (a.x-lx)*(a.x-lx)+(a.y-ly)*(a.y-ly) -
-             ((b.x-lx)*(b.x-lx)+(b.y-ly)*(b.y-ly));
-    }).slice(0, n);
-  };
-  CampNetwork.prototype._loop = function() {
-    var ctx = this.ctx, el = this.el, dots = this.dots;
-    ctx.clearRect(0, 0, el.width, el.height);
-    dots.forEach(function(d){ if (d.at>0) d.at--; if (d.at===0) d.active=false; });
-    for (var i = 0; i < dots.length; i++) {
-      for (var j = i+1; j < dots.length; j++) {
-        var a = dots[i], b = dots[j];
-        var dx = a.x-b.x, dy = a.y-b.y;
-        var dd = Math.sqrt(dx*dx+dy*dy);
-        if (dd < 130) {
-          var al = 1 - dd/130;
-          ctx.beginPath();
-          if (a.active||b.active) {
-            ctx.strokeStyle = 'rgba(0,0,255,'+(al*0.8)+')';
-            ctx.lineWidth = 1.5;
-          } else {
-            ctx.strokeStyle = 'rgba(160,160,160,'+(al*0.25)+')';
-            ctx.lineWidth = 0.6;
-          }
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-    dots.forEach(function(d) {
-      ctx.beginPath();
-      if (d.active) {
-        ctx.shadowBlur = 14; ctx.shadowColor = '#0000FF';
-        ctx.fillStyle = 'rgba(0,0,255,0.88)';
-        ctx.arc(d.x, d.y, 5, 0, Math.PI*2);
-      } else {
-        ctx.shadowBlur = 0;
-        ctx.fillStyle = 'rgba(160,160,160,0.28)';
-        ctx.arc(d.x, d.y, 2, 0, Math.PI*2);
-      }
-      ctx.fill();
-    });
-    ctx.shadowBlur = 0;
-    this._raf = requestAnimationFrame(this._loop.bind(this));
-  };
-
-  campNet = new CampNetwork();
-
   // ================================================================
   // BOND CIRCLES
   // ================================================================
@@ -1402,36 +1203,36 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
     })(t0);
   }
 
+  var heroLandEmojis = ['💵','🧲','🏆','💙'];
   function startHeroBonds(btn) {
     stopBonds();
     function wave() {
       var r = btn.getBoundingClientRect();
-      var sx = r.left+r.width/2, sy = r.top+r.height/2;
-      if (!heroNet) return;
-      var targets = heroNet.getNearest(sx, sy, 12).sort(function(){ return Math.random()-0.5; }).slice(0,4);
-      targets.forEach(function(dot) {
-        var cr = heroNet.el.getBoundingClientRect();
-        fireBond(sx, sy, dot.x+cr.left, dot.y+cr.top, function(){ heroNet.activate(dot); });
-      });
+      var sx = r.left + r.width/2, sy = r.top + r.height/2;
+      var count = 4 + Math.floor(Math.random()*3);
+      for (var i = 0; i < count; i++) {
+        (function(delay) {
+          setTimeout(function() {
+            // random target spread wide across viewport
+            var tx = 80 + Math.random() * (window.innerWidth - 160);
+            var ty = 60 + Math.random() * (window.innerHeight - 120);
+            var em = heroLandEmojis[Math.floor(Math.random()*heroLandEmojis.length)];
+            fireBond(sx, sy, tx, ty, function() {
+              // spawn landing emoji
+              var le = document.createElement('div');
+              le.className = 'bond-land-emoji';
+              le.textContent = em;
+              le.style.left = tx + 'px';
+              le.style.top  = ty + 'px';
+              document.body.appendChild(le);
+              setTimeout(function(){ le.remove(); }, 1500);
+            });
+          }, delay);
+        })(i * 110);
+      }
     }
     wave();
-    bondTimer = setInterval(wave, 750);
-  }
-
-  function startCampBonds(btn) {
-    stopBonds();
-    function wave() {
-      var r = btn.getBoundingClientRect();
-      var sx = r.left+r.width/2, sy = r.top+r.height/2;
-      if (!campNet) return;
-      var targets = campNet.dots.slice().sort(function(){ return Math.random()-0.5; }).slice(0,5);
-      targets.forEach(function(dot) {
-        var cr = campNet.el.getBoundingClientRect();
-        fireBond(sx, sy, dot.x+cr.left, dot.y+cr.top, function(){ campNet.activate(dot); });
-      });
-    }
-    wave();
-    bondTimer = setInterval(wave, 750);
+    bondTimer = setInterval(wave, 1000);
   }
 
   function stopBonds() {
@@ -1549,13 +1350,16 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
   // ================================================================
   var titleEl = document.getElementById('campaign-title');
   if (titleEl) {
+    var titleTriggered = false;
     var titleObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(en) {
-        if (en.isIntersecting && !titleEl.classList.contains('title-animated')) {
-          setTimeout(function(){ titleEl.classList.add('title-animated'); }, 300);
+        if (en.isIntersecting && !titleTriggered) {
+          titleTriggered = true;
+          titleObs.disconnect();
+          setTimeout(function(){ titleEl.classList.add('title-animated'); }, 150);
         }
       });
-    }, { threshold: 0.6 });
+    }, { threshold: 0.2 });
     titleObs.observe(titleEl);
   }
 
