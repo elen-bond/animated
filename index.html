@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bond&beyond — strategic business gifting</title>
+<meta name="description" content="Strategic business gifting. Playful gifts for serious relationships that make business happen.">
+
+<!-- Open Graph (LinkedIn, Facebook, iMessage, Slack) -->
+<meta property="og:title" content="bond&beyond — strategic business gifting">
+<meta property="og:description" content="Strategic business gifting. Playful gifts for serious relationships that make business happen.">
+<meta property="og:image" content="https://bndndbnd.com/preview2.png">
+<meta property="og:url" content="https://bndndbnd.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="bond&beyond">
+
+<!-- Twitter/X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="bond&beyond — strategic business gifting">
+<meta name="twitter:description" content="Strategic business gifting. Playful gifts for serious relationships that make business happen.">
+<meta name="twitter:image" content="https://bndndbnd.com/preview2.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #0000FF;
+  --blue-light: #4040FF;
+  --blue-pale: #EEEEFF;
+  --blue-wash: #F5F5FF;
+  --black: #0A0A0A;
+  --dark: #1A1A1A;
+  --mid: #555;
+  --muted: #888;
+  --light: #C8C8C8;
+  --border: #E0E0E0;
+  --bg: #FFFFFF;
+  --off-white: #FAFAFA;
+  --serif: 'Libre Baskerville', Georgia, serif;
+  --sans: 'Jost', 'Futura', 'Century Gothic', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--black); font-family: var(--sans); font-weight: 400; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--blue); color: #fff; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 40px; }
+
+/* ===== NAVIGATION ===== */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 22px 0; transition: all 0.35s; }
+nav.scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+nav.scrolled .logo img { height: 44px; }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+
+/* LOGO */
+.logo { display: flex; align-items: center; }
+.logo img { height: 80px; width: auto; display: block; transition: height 0.35s; }
+
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--mid); transition: color 0.2s; }
+.nav-links a:hover { color: var(--black); }
+
+/* NAV CTA: Circular button */
+.nav-cta { 
+  background: var(--blue); 
+  color: #fff !important; 
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; 
+  font-family: 'Libre Baskerville', Georgia, serif !important;
+  font-size: 13px; 
+  font-weight: 400 !important; 
+  letter-spacing: 0; 
+  text-transform: none; 
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+  border: 2px solid var(--blue);
+}
+.nav-cta:hover { 
+  background: #fff; 
+  color: var(--blue) !important; 
+  border-color: var(--blue);
+}
+
+/* ===== HERO SECTION ===== */
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; }
+.hero-content { max-width: 820px; }
+
+/* HERO TAG: Larger, more presence */
+.hero-tag { 
+  display: inline-block; 
+  font-family: var(--serif); 
+  font-size: 18px; 
+  font-weight: 400; 
+  text-transform: none; 
+  letter-spacing: 0.1em; 
+  color: var(--blue); 
+  margin-bottom: 36px; 
+  margin-top: 38px; 
+}
+
+/* HERO HEADLINE: Clean, strong, "bonds" in blue */
+.hero h1 { 
+  font-family: var(--serif); 
+  font-weight: 400; 
+  font-size: clamp(44px, 6.5vw, 76px); 
+  line-height: 1.1; 
+  letter-spacing: -0.02em; 
+  color: var(--black); 
+  margin-bottom: 32px; 
+}
+.hero h1 .line-break { display: block; }
+.hero h1 .highlight { color: var(--blue); }
+.hero h1 .hero-lower { text-transform: none; }
+
+/* HERO SUBHEADLINE: Larger, better presence */
+.hero-sub { 
+  font-family: var(--sans); 
+  font-weight: 400; 
+  font-size: 22px; 
+  color: var(--mid); 
+  max-width: 560px; 
+  line-height: 1.6; 
+  margin-bottom: 48px; 
+  letter-spacing: 0.01em;
+}
+
+/* HERO BUTTONS */
+.hero-ctas { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+
+/* PRIMARY CTA: True circle */
+.btn-primary { 
+  background: var(--blue); 
+  color: #fff; 
+  width: 160px;
+  height: 160px;
+  font-family: var(--serif); 
+  font-size: 15px; 
+  font-weight: 400; 
+  letter-spacing: 0; 
+  text-transform: none; 
+  border: 2px solid var(--blue); 
+  border-radius: 50%;
+  cursor: pointer; 
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+}
+.btn-primary:hover { 
+  background: #fff; 
+  color: var(--blue); 
+  border-color: var(--blue);
+}
+
+/* SECONDARY CTA: Minimal, complements the circle */
+.btn-ghost { 
+  background: transparent; 
+  color: var(--black); 
+  padding: 0; 
+  font-family: var(--sans); 
+  font-size: 14px; 
+  font-weight: 500; 
+  letter-spacing: 0.02em; 
+  border: none;
+  cursor: pointer; 
+  transition: all 0.3s ease;
+  position: relative;
+}
+.btn-ghost::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--black);
+  transition: background 0.3s ease;
+}
+.btn-ghost:hover { 
+  color: var(--blue); 
+}
+.btn-ghost:hover::after {
+  background: var(--blue);
+}
+
+.hero-footnote { margin-top: 72px; font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 460px; }
+.hero-footnote span { color: var(--blue); font-weight: 500; }
+
+/* ===== MANIFESTO ===== */
+.manifesto { padding: 100px 0; background: var(--off-white); }
+.manifesto-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.manifesto p { font-family: var(--serif); font-weight: 400; font-size: clamp(21px, 3vw, 30px); line-height: 1.5; color: var(--dark); }
+.manifesto p strong { color: var(--blue); font-weight: 400; }
+
+/* ===== SECTION HEADERS ===== */
+.section-label { font-family: var(--sans); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--blue); margin-bottom: 16px; }
+.section-title { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4.5vw, 50px); line-height: 1.15; color: var(--black); margin-bottom: 20px; letter-spacing: -0.01em; }
+.section-sub { font-family: var(--sans); font-size: 17px; color: var(--mid); max-width: 480px; margin-bottom: 60px; line-height: 1.65; }
+
+/* ===== USE CASES (THE BONDS) ===== */
+.use-cases { padding: 120px 0; }
+.use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.use-case-card { padding: 48px 40px; border: 1px solid var(--border); transition: all 0.35s; }
+.use-case-card:hover { border-color: var(--blue); }
+.use-case-num { font-family: var(--serif); font-size: 13px; color: var(--blue); margin-bottom: 20px; display: block; }
+.use-case-card h3 { font-family: var(--serif); font-weight: 400; font-size: 26px; margin-bottom: 16px; color: var(--black); line-height: 1.3; }
+.use-case-card p { font-family: var(--sans); font-size: 15px; color: var(--mid); line-height: 1.75; }
+.use-case-examples { margin-top: 20px; font-size: 13px; color: var(--muted); }
+.use-case-examples span { display: inline-block; margin-right: 8px; padding: 5px 12px; border: 1px solid var(--border); margin-bottom: 6px; }
+
+/* ===== CAMPAIGNS ===== */
+.campaigns { padding: 120px 0; background: var(--off-white); }
+.campaign-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.campaign-card { background: #fff; border: 1px solid var(--border); transition: all 0.35s; cursor: default; position: relative; overflow: hidden; }
+.campaign-card:hover { border-color: var(--blue); box-shadow: 0 8px 40px rgba(0,0,255,0.06); transform: translateY(-4px); }
+.campaign-img { height: 280px; display: flex; align-items: center; justify-content: center; background: #fff; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+.campaign-img .gift-icon { font-size: 80px; }
+.campaign-img video { width: 50%; height: 50%; object-fit: contain; display: block; }
+.campaign-body { padding: 32px; }
+.campaign-tag { font-family: var(--sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--blue); margin-bottom: 14px; }
+.campaign-card h3 { font-family: var(--serif); font-weight: 400; font-size: 24px; margin-bottom: 10px; color: var(--black); }
+.campaign-tagline { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--blue); margin-bottom: 16px; line-height: 1.5; }
+.campaign-desc { font-family: var(--sans); font-size: 14px; color: var(--mid); line-height: 1.75; margin-bottom: 24px; }
+.campaign-meta { font-family: 'Libre Baskerville', Georgia, serif; font-size: 14px; color: var(--dark); line-height: 1.9; margin-bottom: 16px; }
+.campaign-meta strong { color: var(--black); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--sans); }
+.campaign-detail { font-family: var(--sans); font-size: 12px; color: var(--muted); letter-spacing: 0.02em; }
+.campaign-detail span { display: inline-block; margin-right: 8px; padding: 5px 12px; border: 1px solid var(--border); margin-bottom: 6px; }
+
+/* Campaign CTA button */
+.campaign-cta { text-align: center; margin-top: 96px; }
+.btn-round-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-align: center;
+  border: 2px solid var(--blue);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+.btn-round-cta:hover {
+  background: #fff;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+/* ===== HOW SECTION ===== */
+.how-section { padding: 120px 0; background: var(--black); color: #fff; }
+.how-section .section-label { color: rgba(255,255,255,0.5); }
+.how-section .section-title { color: #fff; }
+.how-section .section-sub { color: rgba(255,255,255,0.5); }
+.how-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+.how-step { padding: 48px; border: 1px solid rgba(255,255,255,0.08); position: relative; }
+.how-step:hover { background: rgba(255,255,255,0.02); }
+.step-number { font-family: var(--serif); font-size: 13px; color: var(--blue-light); margin-bottom: 20px; display: block; letter-spacing: 0.05em; }
+.how-step h3 { font-family: var(--sans); font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; color: #fff; }
+.how-step p { font-family: var(--sans); font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; }
+
+/* ===== E2E STRIP ===== */
+.e2e-strip { padding: 80px 0; background: var(--blue); color: #fff; text-align: center; }
+.e2e-strip h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 3vw, 32px); line-height: 1.45; max-width: 640px; margin: 0 auto 12px; }
+.e2e-strip p { font-family: var(--sans); font-size: 15px; opacity: 0.75; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+/* ===== SCOPE SECTION ===== */
+.scope-section { padding: 120px 0; }
+.scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.scope-list { display: flex; flex-direction: column; gap: 28px; }
+.scope-item { padding-left: 20px; border-left: 3px solid var(--blue); }
+.scope-item h4 { font-family: var(--sans); font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; color: var(--black); }
+.scope-item p { font-family: var(--sans); font-size: 14px; color: var(--mid); line-height: 1.7; }
+
+/* ===== PRICING ===== */
+.pricing { padding: 120px 0; background: var(--off-white); }
+.pricing-components { display: grid; grid-template-columns: 1fr; gap: 0; margin-bottom: 40px; }
+.price-row { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 0; border-bottom: 1px solid var(--border); padding: 32px 0; align-items: start; }
+.price-row:first-child { border-top: 1px solid var(--border); }
+.price-row .price-label { font-family: var(--sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--blue); padding-top: 4px; }
+.price-row .price-amount { font-family: var(--serif); font-size: 32px; color: var(--black); }
+.price-row .price-amount span { font-size: 16px; color: var(--muted); font-family: var(--sans); font-weight: 400; }
+.price-row .price-details { font-size: 14px; color: var(--mid); line-height: 1.8; }
+.price-row .price-details strong { color: var(--black); font-weight: 600; }
+.excl-box { background: #fff; border: 2px solid var(--black); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 40px; }
+.excl-box h3 { font-family: var(--serif); font-size: 28px; margin-bottom: 12px; }
+.excl-box p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+.excl-badge { display: inline-block; background: var(--black); color: #fff; font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; margin-bottom: 16px; }
+
+/* ===== PILOT OFFER ===== */
+.pilot-offer { margin-top: 56px; background: var(--blue); padding: 64px 40px; text-align: center; position: relative; overflow: hidden; }
+.pilot-offer::before { content: ''; position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.05); pointer-events: none; }
+.pilot-offer::after { content: ''; position: absolute; bottom: -100px; left: -60px; width: 260px; height: 260px; border-radius: 50%; background: rgba(255,255,255,0.04); pointer-events: none; }
+.pilot-offer-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.pilot-badge { display: inline-block; background: #fff; color: var(--blue); font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 18px; margin-bottom: 4px; }
+.pilot-headline { font-family: var(--serif); font-weight: 400; font-size: clamp(22px, 3vw, 30px); color: #fff; line-height: 1.4; }
+.pilot-headline strong { color: #fff; font-weight: 700; }
+.pilot-sub { font-family: var(--sans); font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 500px; }
+.pilot-cta-btn { margin-top: 16px; background: #fff !important; color: var(--blue) !important; border-color: #fff !important; }
+.pilot-cta-btn:hover { background: #ff0000 !important; color: #fff !important; border-color: #ff0000 !important; }
+
+/* ===== AUDIENCE ===== */
+.audience { padding: 120px 0; }
+.audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.audience-card { padding: 40px 36px; border: 1px solid var(--border); transition: all 0.3s; }
+.audience-card:hover { border-color: var(--blue); }
+.audience-card h4 { font-family: var(--sans); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 12px; }
+.audience-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+.audience-card .audience-bullets { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+.audience-card .audience-tagline { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--blue); line-height: 1.5; }
+.audience-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+
+/* ===== CTA SECTION ===== */
+.cta-section { padding: 120px 0; border-top: 1px solid var(--border); }
+.cta-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+.cta-section .section-title { text-align: center; }
+.cta-section .section-sub { text-align: center; margin-left: auto; margin-right: auto; }
+.cta-form { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cta-form input, .cta-form textarea, .cta-form select { background: #fff; border: 1px solid var(--border); padding: 16px 20px; font-family: var(--sans); font-size: 14px; font-weight: 400; color: var(--black); outline: none; transition: border-color 0.2s; width: 100%; border-radius: 0; }
+.cta-form input:focus, .cta-form textarea:focus, .cta-form select:focus { border-color: var(--blue); }
+.cta-form input::placeholder, .cta-form textarea::placeholder { color: var(--light); }
+.cta-form select { appearance: none; cursor: pointer; color: var(--muted); }
+
+/* Submit button: Pill-shaped to match system */
+.submit-btn { 
+  background: var(--blue); 
+  color: #fff; 
+  padding: 18px 40px; 
+  border: 2px solid var(--blue); 
+  border-radius: 100px;
+  cursor: pointer; 
+  font-family: var(--serif); 
+  font-size: 15px; 
+  font-weight: 400; 
+  letter-spacing: 0; 
+  text-transform: none; 
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+  width: 100%; 
+  margin-top: 8px; 
+}
+.submit-btn:hover { 
+  background: #fff; 
+  color: var(--blue); 
+  border-color: var(--blue);
+}
+
+/* ===== GO TO TOP BUTTON ===== */
+.go-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  border: 2px solid var(--blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s, color 0.25s;
+  z-index: 99;
+  box-shadow: 0 4px 20px rgba(0,0,255,0.25);
+}
+.go-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.go-top:hover {
+  background: #fff;
+  color: var(--blue);
+}
+.go-top:hover .go-top-arrow {
+  animation: bounceUp 0.6s ease infinite;
+}
+.go-top-arrow {
+  font-size: 16px;
+  line-height: 1;
+  transition: color 0.25s;
+}
+@keyframes bounceUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@media (max-width: 600px) {
+  .go-top { bottom: 24px; right: 20px; width: 56px; height: 56px; font-size: 8px; }
+  .go-top-arrow { font-size: 14px; }
+}
+footer { padding: 48px 0; background: var(--blue); }
+footer .container { display: flex; justify-content: space-between; align-items: center; }
+.footer-left { font-size: 12px; color: rgba(255,255,255,0.6); }
+.footer-left a { color: rgba(255,255,255,0.9); }
+.footer-left a:hover { color: #fff; }
+.footer-right { display: flex; gap: 28px; font-size: 12px; }
+.footer-right a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+.footer-right a:hover { color: #fff; }
+
+/* ===== CONTACT GRID LABELS ===== */
+.contact-col-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--blue);
+}
+.contact-form-col .contact-col-label { margin-bottom: 40px; }
+.contact-cal-col .contact-col-label { margin-bottom: 20px; }
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .scope-grid { gap: 48px; }
+  .excl-box { gap: 32px; padding: 36px; }
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+
+  /* Nav */
+  .nav-links a:not(.nav-cta) { display: none; }
+  .logo img { height: 48px; }
+  nav.scrolled .logo img { height: 36px; }
+  .nav-cta { width: 80px; height: 80px; font-size: 9px; }
+
+  /* Hero */
+  .hero { min-height: auto; padding: 110px 0 64px; }
+  .hero-tag { font-size: 13px; letter-spacing: 0.08em; margin-bottom: 20px; margin-top: 16px; }
+  .hero h1 { font-size: 38px; margin-bottom: 20px; }
+  .hero-sub { font-size: 17px; margin-bottom: 32px; max-width: 100%; }
+  .hero-ctas { gap: 20px; }
+  .btn-primary { width: 120px; height: 120px; font-size: 12px; }
+  .btn-ghost { font-size: 13px; }
+  .hero-footnote { margin-top: 40px; font-size: 13px; }
+
+  /* Manifesto */
+  .manifesto { padding: 64px 0; }
+  .manifesto p { font-size: 20px; }
+
+  /* Section spacing */
+  .use-cases, .campaigns, .how-section, .scope-section, .pricing, .audience { padding: 72px 0; }
+  .section-title { font-size: 30px; margin-bottom: 14px; }
+  .section-sub { font-size: 15px; margin-bottom: 40px; }
+
+  /* Use cases */
+  .use-case-grid { grid-template-columns: 1fr; gap: 16px; }
+  .use-case-card { padding: 32px 28px; }
+  .use-case-card h3 { font-size: 22px; }
+
+  /* Campaigns */
+  .campaign-grid { grid-template-columns: 1fr; gap: 20px; }
+  .campaign-img { height: 260px; }
+  .campaign-body { padding: 24px; }
+  .campaign-card h3 { font-size: 22px; }
+  .campaign-cta { margin-top: 36px; }
+  .btn-round-cta { width: 140px; height: 140px; font-size: 12px; }
+
+  /* E2E strip */
+  .e2e-strip { padding: 56px 0; }
+  .e2e-strip h3 { font-size: 20px; }
+  .e2e-strip p { font-size: 14px; }
+
+  /* How it works */
+  .how-grid { grid-template-columns: 1fr; }
+  .how-step { padding: 32px 28px; }
+  .how-step h3 { font-size: 16px; }
+
+  /* Scope */
+  .scope-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  /* Pricing */
+  .price-row { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+  .price-row .price-amount { font-size: 28px; }
+  .excl-box { grid-template-columns: 1fr; padding: 28px 24px; gap: 24px; }
+  .excl-box h3 { font-size: 22px; }
+  .pilot-offer { padding: 48px 24px; }
+  .pilot-headline { font-size: 20px; }
+  .pilot-sub { font-size: 14px; }
+  .pilot-cta-btn { width: 130px; height: 130px; font-size: 12px; }
+
+  /* Audience */
+  .audience-grid { grid-template-columns: 1fr; gap: 16px; }
+  .audience-card { padding: 28px 24px; }
+
+  /* CTA / Form + Calendar — stack vertically */
+  .cta-section { padding: 72px 0; }
+  .contact-grid { grid-template-columns: 1fr !important; gap: 56px; }
+  .form-row { grid-template-columns: 1fr; }
+  .cta-form input, .cta-form textarea, .cta-form select {
+    padding: 14px 16px;
+    font-size: 16px; /* prevents iOS zoom */
+  }
+  .submit-btn { padding: 16px; font-size: 14px; }
+  #my-cal-inline-issue-a-bond { min-height: 480px !important; }
+
+  /* Footer */
+  footer { padding: 36px 0; }
+  footer .container { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-right { gap: 16px; flex-wrap: wrap; justify-content: center; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .container { padding: 0 18px; }
+
+  /* Nav */
+  .nav-cta { width: 70px; height: 70px; font-size: 8px; }
+  .logo img { height: 40px; }
+
+  /* Hero */
+  .hero { padding: 100px 0 56px; }
+  .hero h1 { font-size: 32px; }
+  .hero-sub { font-size: 16px; }
+  .btn-primary { width: 110px; height: 110px; font-size: 11px; }
+
+  /* Sections */
+  .section-title { font-size: 26px; }
+  .use-case-card h3 { font-size: 20px; }
+  .campaign-card h3 { font-size: 20px; }
+  .price-row .price-amount { font-size: 26px; }
+  .excl-box h3 { font-size: 20px; }
+  .btn-round-cta { width: 120px; height: 120px; font-size: 11px; }
+
+  /* Contact */
+  .contact-form-col .contact-col-label { margin-bottom: 28px; }
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== CUSTOM CURSOR SYSTEM ===== */
+html, body, * { cursor: none !important; }
+#custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  font-size: 30px;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s linear;
+  user-select: none;
+  top: -200px;
+  left: -200px;
+}
+
+/* ===== HERO CANVAS ===== */
+.hero { overflow: hidden; }
+#hero-canvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+.hero .container { position: relative; z-index: 1; }
+
+/* ===== BOND EMISSION CIRCLES ===== */
+.bond-circle {
+  position: fixed;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #0000FF;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  box-shadow: 0 0 6px rgba(0,0,255,0.5);
+}
+
+/* ===== EMOJI POP ===== */
+.emoji-pop {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  font-size: 26px;
+  transform: translate(-50%, -50%);
+  animation: emojiPop 1.1s ease-out forwards;
+}
+@keyframes emojiPop {
+  0%   { opacity: 1; transform: translate(-50%,-50%) scale(0.4); }
+  55%  { opacity: 1; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.25); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty) - 50px)) scale(0.7); }
+}
+
+/* ===== DOLLAR TRAIL ===== */
+.dollar-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9997;
+  font-size: 22px;
+  animation: dollarFade 1.6s ease-out forwards;
+  transform: translate(-50%,-50%);
+}
+@keyframes dollarFade {
+  0%   { opacity: 0.85; transform: translate(-50%,-50%) rotate(var(--rot)) scale(1); }
+  40%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)),-140%) rotate(var(--rot2)) scale(0.5); }
+}
+
+/* ===== TROPHY POP ===== */
+.trophy-pop {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  font-size: 28px;
+  animation: trophyBurst 1.2s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+  transform: translate(-50%,-50%);
+}
+@keyframes trophyBurst {
+  0%   { opacity: 1; transform: translate(-50%,-50%) scale(0.2); }
+  45%  { opacity: 1; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.4); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty) - 70px)) scale(0.7); }
+}
+
+/* ===== CAMPAIGN SECTION CANVAS ===== */
+.campaigns { position: relative; }
+#campaigns-canvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.campaigns .container { position: relative; z-index: 1; }
+
+/* ===== CAMPAIGN ANIMATED TITLE ===== */
+#campaign-title .title-not {
+  display: inline;
+  transition: opacity 0.35s ease 0.15s;
+}
+#campaign-title .title-merch-swag {
+  display: inline;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.35s ease 0.45s;
+}
+#campaign-title .title-merch-swag::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 52%;
+  width: 0; height: 3px;
+  background: currentColor;
+  transition: width 0s;
+  opacity: 0.7;
+}
+#campaign-title .bonds-word {
+  display: inline-block;
+}
+/* — Triggered state — */
+#campaign-title.title-animated .title-not { opacity: 0; }
+#campaign-title.title-animated .title-merch-swag { opacity: 1; }
+#campaign-title.title-animated .title-merch-swag::after {
+  width: 100%;
+  transition: width 0.45s ease 0.85s;
+}
+#campaign-title.title-animated .bonds-word {
+  animation: bondsLand 0.6s cubic-bezier(0.175,0.885,0.32,1.275) 1.35s both;
+}
+@keyframes bondsLand {
+  0%   { opacity: 0; transform: scale(2.5) translateY(-12px); }
+  65%  { transform: scale(0.9) translateY(4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+</style>
+</head>
+<body>
+<div id="custom-cursor">🧲</div>
+
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="bond_logo.png" alt="bond and beyond">
+    </a>
+    <div class="nav-links">
+      <a href="#use-cases">the bonds</a>
+      <a href="#bonds">our campaigns</a>
+      <a href="#how">how it works</a>
+      <a href="#pricing">bond economics</a>
+      <a href="#contact" class="nav-cta">issue a<br>bond</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">strategic business gifting</div>
+      <h1><span class="hero-lower">we</span> issue <span class="highlight">bonds</span><br><span class="hero-lower">you</span> collect the returns</h1>
+      <p class="hero-sub">Custom gifts that start and build business relationships. We call them bonds because ignoring them feels rude.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">issue a<br>bond</a>
+        <a href="#bonds" class="btn-ghost">See the Bonds</a>
+      </div>
+      <p class="hero-footnote" style="color: var(--dark);">Made by humans for the humans on the other side of the AI&nbsp;stack.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="container">
+    <div class="manifesto-inner fade-in">
+      <p>In an AI-driven world, <strong>the best returns still come from relationships.</strong> A good gift breaks the pattern, starts a laugh, and builds connection before you speak.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE BONDS -->
+<section class="use-cases" id="use-cases">
+  <div class="container">
+    <div class="section-label fade-in">The Bonds</div>
+    <h2 class="section-title fade-in">Not all bonds are created equal.</h2>
+    <p class="section-sub fade-in">Whether you're opening a new door or reinforcing one that's already open, we have the instrument.</p>
+    <div class="use-case-grid fade-in">
+      <div class="use-case-card">
+        <span class="use-case-num">Bond Type I</span>
+        <h3>Turn cold leads into warm conversations</h3>
+        <p>Your prospects get 147 cold emails a day. They open zero. We send them something funny, emotional, and completely out of the box, quite literally. Their "thank you" becomes a conversation opener.</p>
+        <div class="use-case-examples">
+          <span>New business development</span>
+          <span>Pipeline generation</span>
+          <span>Market entry</span>
+        </div>
+      </div>
+      <div class="use-case-card">
+        <span class="use-case-num">Bond Type II</span>
+        <h3>Turn warm relationships into more business</h3>
+        <p>Your clients, investors, and warm prospects already know your name. Strengthen the relationship with a gift. Much better than another "hope all is well" email.</p>
+        <div class="use-case-examples">
+          <span>Client retention</span>
+          <span>Investor relations</span>
+          <span>Warm prospect nurture</span>
+          <span>Key account gifting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- E2E STRIP (moved up, after The Bonds) -->
+<section class="e2e-strip">
+  <div class="container">
+    <h3>Think of us as a flower delivery service 💐 but for B2B relationship building.</h3>
+    <p>We handle everything. Concept, design, production, prospect outreach, delivery coordination, and follow-up. You focus on the relationship.</p>
+  </div>
+</section>
+
+<!-- CAMPAIGN EXAMPLES -->
+<section class="campaigns" id="bonds">
+  <canvas id="campaigns-canvas"></canvas>
+  <div class="container">
+    <div class="section-label fade-in">Our Campaigns</div>
+    <h2 class="section-title fade-in" id="campaign-title"><span class="title-not">Not </span><span class="title-merch-swag">merch. Swag.</span><span class="bonds-word"> Bonds.</span></h2>
+    <p class="section-sub fade-in">Every campaign is a custom creative concept designed around your brand, your audience, and the relationship you want to build.</p>
+    <div class="campaign-grid">
+
+      <div class="campaign-card fade-in">
+        <div class="campaign-img"><video src="truffles.mp4" autoplay loop muted playsinline></video></div>
+        <div class="campaign-body">
+          <div class="campaign-tag">Service Provider</div>
+          <h3>🍄 black truffle box</h3>
+          <p class="campaign-tagline">"Smells like post money"</p>
+          <div class="campaign-meta">
+            <strong>Client:</strong> Venture banking<br>
+            <strong>Target:</strong> Startups who just closed a funding round
+          </div>
+          <p class="campaign-desc">The bank "smelled" the raise and sent truffles to celebrate. Founders make truffle pasta and think, what a nice bank.</p>
+          <div class="campaign-detail">
+            <span>Whole truffle jar</span><span>Custom box</span><span>Branded card</span><span>Email sequence</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card fade-in">
+        <div class="campaign-img"><video src="extinguisher.mp4" autoplay loop muted playsinline></video></div>
+        <div class="campaign-body">
+          <div class="campaign-tag">Fintech</div>
+          <h3>🧯 fire extinguisher goodie</h3>
+          <p class="campaign-tagline">"Burn rate extinguisher"</p>
+          <div class="campaign-meta">
+            <strong>Client:</strong> Flexible office solutions startup<br>
+            <strong>Target:</strong> CFOs of companies with office leases expiring soon
+          </div>
+          <p class="campaign-desc">Fire extinguisher shaped mini bar with premium whiskey. "In case of office lease." CFOs take a sip, reopen the fin model, and think, maybe these people can help.</p>
+          <div class="campaign-detail">
+            <span>Custom bar case</span><span>Premium whiskey</span><span>Rocks glass</span><span>Email sequence</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card fade-in">
+        <div class="campaign-img"><video src="boxers.mp4" autoplay loop muted playsinline></video></div>
+        <div class="campaign-body">
+          <div class="campaign-tag">Investor Relations</div>
+          <h3>🩲 boxers</h3>
+          <p class="campaign-tagline">"Fundraising is hard"</p>
+          <div class="campaign-meta">
+            <strong>Client:</strong> Investor relations firm<br>
+            <strong>Target:</strong> Startups about to raise their next round
+          </div>
+          <p class="campaign-desc">"Fundraising is hard" boxers to wear on fundraising calls, dinners, and board meetings. Supportive in every sense of the word.</p>
+          <div class="campaign-detail">
+            <span>Custom boxers</span><span>Branded packaging</span><span>Card insert</span><span>Email sequence</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Issue a Bond button under cards -->
+    <div class="campaign-cta fade-in">
+      <a href="#contact" class="btn-round-cta">see our bonds,<br>issue yours</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-label fade-in">How It Works</div>
+    <h2 class="section-title fade-in">How we underwrite a bond.</h2>
+    <p class="section-sub fade-in">We issue. You use. They remember.</p>
+    <div class="how-grid fade-in">
+      <div class="how-step">
+        <span class="step-number">01 &middot; Trigger</span>
+        <h3>We find the moment</h3>
+        <p>A funding round closes. An anniversary hits. A client renews. A new CTO is hired. We identify the trigger that makes your gift timely, not random. Good timing is half the bond.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-number">02 &middot; Underwrite</span>
+        <h3>We structure the bond</h3>
+        <p>A custom gift concept tied to your brand and your audience's world. Creative direction, packaging design, clever copy, branded inserts. Something they'll actually want to receive. Wall Street structures deals. We structure delightful surprises.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-number">03 &middot; Issue &amp; deliver</span>
+        <h3>We go to market</h3>
+        <p>We source, produce, and assemble every gift. Then we reach out to your recipients, collect their delivery details through a personalized claim flow, and ship directly to their door. Tracked, timed, handled.</p>
+      </div>
+      <div class="how-step">
+        <span class="step-number">04 &middot; Mature</span>
+        <h3>The bond matures</h3>
+        <p>They receive the gift. They laugh. They eat the pasta. They pour the drink. Then they do what every good bond obliges: they pay it back. With a thank you, a reply, a meeting. Your relationship just went up in value.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE -->
+<section class="scope-section">
+  <div class="container">
+    <div class="scope-grid">
+      <div>
+        <div class="section-label fade-in">Full Service</div>
+        <h2 class="section-title fade-in">End-to-end.<br>From concept to doorstep.</h2>
+        <p class="section-sub fade-in" style="margin-bottom:0;">We don't hand you a box and wish you luck. We run the entire campaign: creative, production, outreach, delivery, and reporting. Full-service bond underwriting.</p>
+      </div>
+      <div class="scope-list fade-in">
+        <div class="scope-item"><h4>Campaign concept &amp; creative</h4><p>Gift concept, packaging design, branding, wording, card copy. All custom to your audience and your voice.</p></div>
+        <div class="scope-item"><h4>Gift production &amp; packaging</h4><p>Sourcing, production, quality check, assembly. Branded down to the tissue paper.</p></div>
+        <div class="scope-item"><h4>Recipient outreach &amp; coordination</h4><p>Personalized email sequence: teaser, gift claim form, delivery confirmation. We contact your recipients and collect their delivery info.</p></div>
+        <div class="scope-item"><h4>Delivery &amp; logistics</h4><p>Direct-to-door delivery. Tracked, timed, and handled. Like a premium flower service, but for business.</p></div>
+        <div class="scope-item"><h4>Tracking &amp; campaign reporting</h4><p>Claim rates, delivery status, engagement metrics, follow-up coordination. Full visibility on your bond performance.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOND ECONOMICS -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label fade-in" style="text-align:center;">Bond Economics</div>
+    <h2 class="section-title fade-in" style="text-align:center; margin-bottom: 16px;">Invest in the relationships<br>that drive your business.</h2>
+    <p class="section-sub fade-in" style="text-align:center; margin-left:auto; margin-right:auto; margin-bottom: 16px;">Because in an AI-driven world, the best returns still come from relationships.</p>
+    <p class="fade-in" style="text-align:center; font-size: 14px; color: var(--muted); margin-bottom: 56px;">Reach out for a custom quote. Transparent pricing. No hidden fees.</p>
+    <div class="pricing-components fade-in">
+      <div class="price-row">
+        <div class="price-label">Campaign<br>Origination</div>
+        <div><div class="price-amount">$3,500+</div><div style="font-size:13px; color: var(--muted); margin-top: 4px;">One-time creative fee per campaign</div></div>
+        <div class="price-details"><strong>Campaign strategy &amp; concept</strong><br>Creative direction &amp; copywriting<br>Packaging &amp; branding design<br>Email sequence design<br>Prospect messaging framework<br>Compliance review</div>
+      </div>
+      <div class="price-row">
+        <div class="price-label">Bonds</div>
+        <div><div class="price-amount">$99+ <span>/ gift</span></div><div style="font-size:13px; color: var(--muted); margin-top: 4px;">Premium custom gifts, not corporate merch</div></div>
+        <div class="price-details"><strong>Curated premium gift item</strong><br>Custom branded box or packaging<br>Branded card + services insert<br>Secure packaging &amp; materials<br>Full customization per campaign</div>
+      </div>
+      <div class="price-row">
+        <div class="price-label">Campaign<br>Management</div>
+        <div><div class="price-amount">$30+ <span>/ gift</span></div><div style="font-size:13px; color: var(--muted); margin-top: 4px;">We run it. You close deals.</div></div>
+        <div class="price-details"><strong>Recipient outreach &amp; delivery</strong><br>Outreach: email, LinkedIn<br>Gift claim flow, delivery form<br>Delivery coordination &amp; tracking<br>Campaign reporting &amp; analytics<br>Shipping included in continental US</div>
+      </div>
+    </div>
+    <div class="excl-box fade-in">
+      <div>
+        <div class="excl-badge">Exclusivity Option</div>
+        <h3>Own the concept entirely.</h3>
+        <p>For an additional premium, we guarantee your campaign concept is exclusively yours. We will never use the same gift idea, creative direction, or messaging with any other client. Your bond stays one of one.</p>
+      </div>
+      <div>
+        <p style="font-size:14px; color: var(--mid); line-height: 1.8;">
+          <strong style="color: var(--black);">Without exclusivity:</strong> We may offer similar campaign concepts to non-competing companies, and feature your campaign style in our portfolio.<br><br>
+          <strong style="color: var(--black);">With exclusivity:</strong> The concept, creative, and gift format are locked to your brand. Priced per campaign. <a href="#contact" style="color:var(--blue); font-weight:600; text-decoration:underline;">Inquire for a quote.</a>
+        </p>
+      </div>
+    </div>
+    <div class="pilot-offer fade-in">
+      <div class="pilot-offer-inner">
+        <div class="pilot-badge">Bond Pilot</div>
+        <p class="pilot-headline">Considering a first campaign? Start with a 25-gift pilot at <strong>$5,000</strong> all-in.</p>
+        <p class="pilot-sub">That's $200 per relationship started or strengthened. Compare that to your cost per qualified meeting, and factor in that this one arrives with a smile, not an eye-roll.</p>
+        <a href="#contact" class="btn-round-cta pilot-cta-btn">issue a<br>bond</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="audience">
+  <div class="container">
+    <div class="section-label fade-in" style="text-align:center;">Who It's For</div>
+    <h2 class="section-title fade-in" style="text-align:center; margin-bottom:56px;">Built for the business of relationships.</h2>
+    <div class="audience-grid fade-in">
+      <div class="audience-card">
+        <span class="audience-icon">&#x1F3DB;&#xFE0F;</span>
+        <h4>Service Providers</h4>
+        <p class="audience-bullets">Banks &middot; Law firms &middot; Fractional CFOs &middot; Accountants &middot; Consultants &middot; Advisors</p>
+        <p class="audience-tagline">Sell trust better than a cold intro ever could.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">&#x1F3AF;</span>
+        <h4>Business Development</h4>
+        <p class="audience-bullets">Sales &middot; Partnerships &middot; Outbound &middot; GTM &middot; Agencies &middot; RevOps-led</p>
+        <p class="audience-tagline">Give your team a warmer way in.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">&#x1F4CA;</span>
+        <h4>Investors</h4>
+        <p class="audience-bullets">VC funds &middot; PE firms &middot; Hedge funds &middot; Family offices &middot; Angels &middot; Debt capital providers</p>
+        <p class="audience-tagline">Because investor relations should feel like relationships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-label fade-in">Issue a Bond</div>
+      <h2 class="section-title fade-in">Tell us who matters to your business.</h2>
+      <p class="section-sub fade-in" style="margin-left:auto; margin-right:auto;">New prospect or existing relationship, we'll design a bond they won't forget.</p>
+    </div>
+    <div class="contact-grid fade-in" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+      <!-- LEFT: Form -->
+      <div class="contact-form-col">
+        <div class="contact-col-label">Email us</div>
+        <form class="cta-form" action="https://formspree.io/f/xpqyjdrp" method="POST">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="company" placeholder="Company" required>
+          </div>
+          <input type="email" name="email" placeholder="Email" required>
+          <select name="campaign_size" required>
+            <option value="" disabled selected>Estimated campaign size</option>
+            <option value="10-25">10 - 25 bonds</option>
+            <option value="25-50">25 - 50 bonds</option>
+            <option value="50-100">50 - 100 bonds</option>
+            <option value="100+">100+ bonds</option>
+          </select>
+          <textarea name="message" rows="3" placeholder="Who are you trying to reach or strengthen relationships with? Any triggers we should know about?"></textarea>
+          <button type="submit" class="submit-btn">issue your first bond</button>
+        </form>
+      </div>
+      <!-- RIGHT: Calendar -->
+      <div class="contact-cal-col">
+        <div class="contact-col-label">Book a call</div>
+        <div style="width:100%;min-height:500px;" id="my-cal-inline-issue-a-bond"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GO TO TOP -->
+<a href="#" class="go-top" id="goTop" aria-label="Go to top">
+  <span class="go-top-arrow">↑</span>
+  <span>top</span>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-left">&copy; 2026 bond&amp;beyond &middot; business bond underwriters &middot; <a href="https://prophet.partners" target="_blank">prophet.partners</a></div>
+    <div class="footer-right">
+      <a href="mailto:bond@bndndbnd.com">bond@bndndbnd.com</a>
+      <a href="tel:9292592077">929-259-2077</a>
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+var nav = document.getElementById('nav');
+var goTop = document.getElementById('goTop');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+  goTop.classList.toggle('visible', window.scrollY > 400);
+});
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+</script>
+
+<!-- Cal inline embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
+  Cal.ns["issue-a-bond"]("inline", {
+    elementOrSelector:"#my-cal-inline-issue-a-bond",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"light"},
+    calLink: "elena-10010/issue-a-bond",
+  });
+  Cal.ns["issue-a-bond"]("ui", {"hideEventTypeDetails":true,"layout":"month_view"});
+</script>
+<!-- Cal inline embed code ends -->
+
+
+<script>
+(function() {
+  'use strict';
+
+  // ─── CUSTOM CURSOR ────────────────────────────────────────────
+  const cursor = document.getElementById('custom-cursor');
+  let sectionCursor = '🧲';
+
+  function setCursor(e) { cursor.textContent = e; }
+  function setSection(e) { sectionCursor = e; setCursor(e); }
+  function restore() { setCursor(sectionCursor); }
+
+  document.addEventListener('mousemove', function(e) {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top  = e.clientY + 'px';
+    if (heroNet) heroNet.setMouse(e.clientX, e.clientY);
+  });
+
+  // Section cursors via IntersectionObserver (50% threshold)
+  var sectionMap = [
+    ['.hero',         '🧲'],
+    ['.manifesto',    '🤝'],
+    ['.use-cases',    '🤝'],
+    ['.e2e-strip',    '🚲'],
+    ['.campaigns',    '💣'],
+    ['.how-section',  '🏛️'],
+    ['.scope-section','🤝'],
+    ['.pricing',      '💵'],
+    ['.audience',     '🤝'],
+    ['.cta-section',  '🤙'],
+  ];
+  var secObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(en) {
+      if (en.isIntersecting) {
+        var m = sectionMap.find(function(s){ return en.target.matches(s[0]); });
+        if (m) setSection(m[1]);
+      }
+    });
+  }, { threshold: 0.35 });
+  sectionMap.forEach(function(s) {
+    var el = document.querySelector(s[0]);
+    if (el) secObs.observe(el);
+  });
+
+  // ─── USE CASE CARDS ───────────────────────────────────────────
+  var ucCards = document.querySelectorAll('.use-case-card');
+  var ucEmojis = ['🤗','🤑'];
+  ucCards.forEach(function(card, i) {
+    card.addEventListener('mouseenter', function(){ setCursor(ucEmojis[i]||'🤝'); });
+    card.addEventListener('mouseleave', restore);
+  });
+
+  // ─── HERO CTA BUTTON ─────────────────────────────────────────
+  var heroCta = document.querySelector('.hero .btn-primary');
+  if (heroCta) {
+    heroCta.addEventListener('mouseenter', function() {
+      setCursor('🏛️');
+      startHeroBonds(heroCta);
+    });
+    heroCta.addEventListener('mouseleave', function() {
+      restore();
+      stopBonds();
+    });
+  }
+
+  // ─── CAMPAIGN CTA BUTTON ──────────────────────────────────────
+  var campCta = document.querySelector('.campaign-cta .btn-round-cta');
+  if (campCta) {
+    campCta.addEventListener('mouseenter', function() {
+      setCursor('🏛️');
+      if (campNet) { campNet.el.style.opacity = '1'; }
+      startCampBonds(campCta);
+    });
+    campCta.addEventListener('mouseleave', function() {
+      restore();
+      stopBonds();
+      if (campNet) {
+        campNet.el.style.opacity = '0';
+        campNet.resetAll();
+      }
+    });
+  }
+
+  // ─── CAMPAIGN CARDS EMOJI POP ─────────────────────────────────
+  var campCards = document.querySelectorAll('.campaign-card');
+  var cardEmojis = ['🍄','🧯','🗿'];
+  campCards.forEach(function(card, i) {
+    var em = cardEmojis[i] || '🎁';
+    card.addEventListener('mouseenter', function() {
+      setCursor(em);
+      startEmojiPop(card, em);
+    });
+    card.addEventListener('mouseleave', function() {
+      restore();
+      stopEmojiPop();
+    });
+  });
+
+  // ─── PILOT SECTION ───────────────────────────────────────────
+  var pilotBox = document.querySelector('.pilot-offer');
+  if (pilotBox) {
+    pilotBox.addEventListener('mouseenter', function(){ setCursor('🥊'); });
+    pilotBox.addEventListener('mouseleave', restore);
+  }
+  var pilotCta = document.querySelector('.pilot-cta-btn');
+  if (pilotCta) {
+    pilotCta.addEventListener('mouseenter', function() {
+      setCursor('🏆');
+      startTrophy(pilotCta);
+    });
+    pilotCta.addEventListener('mouseleave', function() {
+      setCursor('🥊');
+      stopTrophy();
+    });
+  }
+
+  // ─── NAV CTA ─────────────────────────────────────────────────
+  var navCta = document.querySelector('.nav-cta');
+  if (navCta) {
+    navCta.addEventListener('mouseenter', function(){ setCursor('🏛️'); });
+    navCta.addEventListener('mouseleave', restore);
+  }
+
+  // ================================================================
+  // HERO NETWORK CANVAS
+  // ================================================================
+  var heroNet = null;
+
+  function HeroNetwork() {
+    this.el = document.getElementById('hero-canvas');
+    if (!this.el) return;
+    this.ctx = this.el.getContext('2d');
+    this.dots = [];
+    this.mx = -9999; this.my = -9999;
+    this._resize();
+    window.addEventListener('resize', this._resize.bind(this));
+    this._buildDots();
+    this._raf = requestAnimationFrame(this._loop.bind(this));
+  }
+  HeroNetwork.prototype._resize = function() {
+    var hero = document.querySelector('.hero');
+    this.el.width  = hero.offsetWidth;
+    this.el.height = hero.offsetHeight;
+  };
+  HeroNetwork.prototype._buildDots = function() {
+    var w = this.el.width, h = this.el.height;
+    var count = Math.min(90, Math.floor(w * h / 7500));
+    this.dots = [];
+    for (var i = 0; i < count; i++) {
+      var x = Math.random() * w, y = Math.random() * h;
+      this.dots.push({ x:x, y:y, bx:x, by:y, vx:0, vy:0, active:false, at:0 });
+    }
+  };
+  HeroNetwork.prototype.setMouse = function(cx, cy) {
+    var r = this.el.getBoundingClientRect();
+    this.mx = cx - r.left;
+    this.my = cy - r.top;
+  };
+  HeroNetwork.prototype.activate = function(dot) {
+    dot.active = true; dot.at = 90;
+  };
+  HeroNetwork.prototype.getNearest = function(cx, cy, n) {
+    var r = this.el.getBoundingClientRect();
+    var lx = cx - r.left, ly = cy - r.top;
+    return this.dots.slice().sort(function(a,b){
+      return (a.x-lx)*(a.x-lx)+(a.y-ly)*(a.y-ly) -
+             ((b.x-lx)*(b.x-lx)+(b.y-ly)*(b.y-ly));
+    }).slice(0, n);
+  };
+  HeroNetwork.prototype._loop = function() {
+    var ctx = this.ctx, el = this.el, dots = this.dots;
+    var mx = this.mx, my = this.my;
+    ctx.clearRect(0, 0, el.width, el.height);
+
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      var dx = mx - d.x, dy = my - d.y;
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      var mag = 150;
+      if (dist < mag && dist > 1) {
+        var force = ((mag - dist) / mag) * 2.8;
+        d.vx += (dx/dist)*force;
+        d.vy += (dy/dist)*force;
+      }
+      d.vx += (d.bx - d.x) * 0.055;
+      d.vy += (d.by - d.y) * 0.055;
+      d.vx *= 0.80; d.vy *= 0.80;
+      d.x += d.vx;  d.y += d.vy;
+      if (d.at > 0) d.at--;
+      if (d.at === 0) d.active = false;
+    }
+    // Lines
+    for (var i = 0; i < dots.length; i++) {
+      for (var j = i+1; j < dots.length; j++) {
+        var a = dots[i], b = dots[j];
+        var ddx = a.x-b.x, ddy = a.y-b.y;
+        var dd = Math.sqrt(ddx*ddx+ddy*ddy);
+        if (dd < 115) {
+          var al = (1 - dd/115);
+          ctx.beginPath();
+          if (a.active || b.active) {
+            ctx.strokeStyle = 'rgba(0,0,255,' + (al*0.7) + ')';
+            ctx.lineWidth = 1.2;
+          } else {
+            ctx.strokeStyle = 'rgba(145,145,145,' + (al*0.38) + ')';
+            ctx.lineWidth = 0.7;
+          }
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    // Dots
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      ctx.beginPath();
+      if (d.active) {
+        ctx.shadowBlur = 10; ctx.shadowColor = '#0000FF';
+        ctx.fillStyle = 'rgba(0,0,255,0.85)';
+        ctx.arc(d.x, d.y, 4.5, 0, Math.PI*2);
+      } else {
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = 'rgba(130,130,130,0.55)';
+        ctx.arc(d.x, d.y, 2.5, 0, Math.PI*2);
+      }
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+    this._raf = requestAnimationFrame(this._loop.bind(this));
+  };
+
+  heroNet = new HeroNetwork();
+
+  // ================================================================
+  // CAMPAIGNS NETWORK CANVAS
+  // ================================================================
+  var campNet = null;
+
+  function CampNetwork() {
+    this.el = document.getElementById('campaigns-canvas');
+    if (!this.el) return;
+    this.ctx = this.el.getContext('2d');
+    this.dots = [];
+    this._resize();
+    window.addEventListener('resize', this._resize.bind(this));
+    this._buildDots();
+    this._raf = requestAnimationFrame(this._loop.bind(this));
+  }
+  CampNetwork.prototype._resize = function() {
+    var sec = document.querySelector('.campaigns');
+    this.el.width  = sec.offsetWidth;
+    this.el.height = sec.offsetHeight;
+  };
+  CampNetwork.prototype._buildDots = function() {
+    var w = this.el.width, h = this.el.height;
+    var count = Math.min(70, Math.floor(w*h/10000));
+    this.dots = [];
+    for (var i = 0; i < count; i++) {
+      this.dots.push({ x: Math.random()*w, y: Math.random()*h, active:false, at:0 });
+    }
+  };
+  CampNetwork.prototype.resetAll = function() {
+    this.dots.forEach(function(d){ d.active=false; d.at=0; });
+  };
+  CampNetwork.prototype.activate = function(dot) {
+    dot.active = true; dot.at = 130;
+  };
+  CampNetwork.prototype.getNearest = function(cx, cy, n) {
+    var r = this.el.getBoundingClientRect();
+    var lx = cx-r.left, ly = cy-r.top;
+    return this.dots.slice().sort(function(a,b){
+      return (a.x-lx)*(a.x-lx)+(a.y-ly)*(a.y-ly) -
+             ((b.x-lx)*(b.x-lx)+(b.y-ly)*(b.y-ly));
+    }).slice(0, n);
+  };
+  CampNetwork.prototype._loop = function() {
+    var ctx = this.ctx, el = this.el, dots = this.dots;
+    ctx.clearRect(0, 0, el.width, el.height);
+    dots.forEach(function(d){ if (d.at>0) d.at--; if (d.at===0) d.active=false; });
+    for (var i = 0; i < dots.length; i++) {
+      for (var j = i+1; j < dots.length; j++) {
+        var a = dots[i], b = dots[j];
+        var dx = a.x-b.x, dy = a.y-b.y;
+        var dd = Math.sqrt(dx*dx+dy*dy);
+        if (dd < 130) {
+          var al = 1 - dd/130;
+          ctx.beginPath();
+          if (a.active||b.active) {
+            ctx.strokeStyle = 'rgba(0,0,255,'+(al*0.8)+')';
+            ctx.lineWidth = 1.5;
+          } else {
+            ctx.strokeStyle = 'rgba(160,160,160,'+(al*0.25)+')';
+            ctx.lineWidth = 0.6;
+          }
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    dots.forEach(function(d) {
+      ctx.beginPath();
+      if (d.active) {
+        ctx.shadowBlur = 14; ctx.shadowColor = '#0000FF';
+        ctx.fillStyle = 'rgba(0,0,255,0.88)';
+        ctx.arc(d.x, d.y, 5, 0, Math.PI*2);
+      } else {
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = 'rgba(160,160,160,0.28)';
+        ctx.arc(d.x, d.y, 2, 0, Math.PI*2);
+      }
+      ctx.fill();
+    });
+    ctx.shadowBlur = 0;
+    this._raf = requestAnimationFrame(this._loop.bind(this));
+  };
+
+  campNet = new CampNetwork();
+
+  // ================================================================
+  // BOND CIRCLES
+  // ================================================================
+  var bondTimer = null;
+
+  function fireBond(sx, sy, tx, ty, onArrive) {
+    var el = document.createElement('div');
+    el.className = 'bond-circle';
+    el.style.left = sx+'px'; el.style.top = sy+'px';
+    document.body.appendChild(el);
+    var dur = 550 + Math.random()*350;
+    var t0 = performance.now();
+    (function tick(now) {
+      var p = Math.min((now-t0)/dur, 1);
+      var e = p<0.5 ? 2*p*p : -1+(4-2*p)*p;
+      el.style.left = (sx+(tx-sx)*e)+'px';
+      el.style.top  = (sy+(ty-sy)*e)+'px';
+      el.style.opacity = String(1 - p*0.4);
+      el.style.transform = 'translate(-50%,-50%) scale('+(1-p*0.4)+')';
+      if (p < 1) requestAnimationFrame(tick);
+      else { el.remove(); if (onArrive) onArrive(); }
+    })(t0);
+  }
+
+  function startHeroBonds(btn) {
+    stopBonds();
+    function wave() {
+      var r = btn.getBoundingClientRect();
+      var sx = r.left+r.width/2, sy = r.top+r.height/2;
+      if (!heroNet) return;
+      var targets = heroNet.getNearest(sx, sy, 12).sort(function(){ return Math.random()-0.5; }).slice(0,4);
+      targets.forEach(function(dot) {
+        var cr = heroNet.el.getBoundingClientRect();
+        fireBond(sx, sy, dot.x+cr.left, dot.y+cr.top, function(){ heroNet.activate(dot); });
+      });
+    }
+    wave();
+    bondTimer = setInterval(wave, 750);
+  }
+
+  function startCampBonds(btn) {
+    stopBonds();
+    function wave() {
+      var r = btn.getBoundingClientRect();
+      var sx = r.left+r.width/2, sy = r.top+r.height/2;
+      if (!campNet) return;
+      var targets = campNet.dots.slice().sort(function(){ return Math.random()-0.5; }).slice(0,5);
+      targets.forEach(function(dot) {
+        var cr = campNet.el.getBoundingClientRect();
+        fireBond(sx, sy, dot.x+cr.left, dot.y+cr.top, function(){ campNet.activate(dot); });
+      });
+    }
+    wave();
+    bondTimer = setInterval(wave, 750);
+  }
+
+  function stopBonds() {
+    if (bondTimer) { clearInterval(bondTimer); bondTimer = null; }
+  }
+
+  // ================================================================
+  // EMOJI POPS
+  // ================================================================
+  var emojiTimer = null;
+
+  function spawnEmoji(card, emoji) {
+    var r = card.getBoundingClientRect();
+    for (var i = 0; i < 3; i++) {
+      (function(delay) {
+        setTimeout(function() {
+          var el = document.createElement('div');
+          el.className = 'emoji-pop';
+          el.textContent = emoji;
+          var tx = ((Math.random()-0.5)*160)+'px';
+          var ty = (-(Math.random()*100+40))+'px';
+          el.style.setProperty('--tx', tx);
+          el.style.setProperty('--ty', ty);
+          el.style.left = (r.left + Math.random()*r.width)+'px';
+          el.style.top  = (r.top  + r.height*0.3 + Math.random()*r.height*0.4)+'px';
+          document.body.appendChild(el);
+          setTimeout(function(){ el.remove(); }, 1200);
+        }, delay);
+      })(i * 130);
+    }
+  }
+
+  function startEmojiPop(card, emoji) {
+    stopEmojiPop();
+    spawnEmoji(card, emoji);
+    emojiTimer = setInterval(function(){ spawnEmoji(card, emoji); }, 600);
+  }
+
+  function stopEmojiPop() {
+    if (emojiTimer) { clearInterval(emojiTimer); emojiTimer = null; }
+  }
+
+  // ================================================================
+  // TROPHY POPS
+  // ================================================================
+  var trophyTimer = null;
+
+  function spawnTrophy(btn) {
+    var r = btn.getBoundingClientRect();
+    for (var i = 0; i < 5; i++) {
+      (function(delay) {
+        setTimeout(function() {
+          var el = document.createElement('div');
+          el.className = 'trophy-pop';
+          el.textContent = '🏆';
+          var angle = Math.random()*Math.PI*2;
+          var dist  = 50 + Math.random()*70;
+          el.style.setProperty('--tx', (Math.cos(angle)*dist)+'px');
+          el.style.setProperty('--ty', (-(Math.sin(angle)*dist+20))+'px');
+          el.style.left = (r.left+r.width/2)+'px';
+          el.style.top  = (r.top+r.height/2)+'px';
+          document.body.appendChild(el);
+          setTimeout(function(){ el.remove(); }, 1300);
+        }, delay);
+      })(i * 90);
+    }
+  }
+
+  function startTrophy(btn) {
+    stopTrophy();
+    spawnTrophy(btn);
+    trophyTimer = setInterval(function(){ spawnTrophy(btn); }, 700);
+  }
+
+  function stopTrophy() {
+    if (trophyTimer) { clearInterval(trophyTimer); trophyTimer = null; }
+  }
+
+  // ================================================================
+  // DOLLAR TRAIL — Bond Economics section
+  // ================================================================
+  var pricingEl = document.querySelector('.pricing');
+  var pilotEl   = document.querySelector('.pilot-offer');
+  var dollarTick = 0;
+
+  document.addEventListener('mousemove', function(e) {
+    if (!pricingEl) return;
+    var pr = pricingEl.getBoundingClientRect();
+    var inSection = e.clientY >= pr.top && e.clientY <= pr.bottom &&
+                    e.clientX >= pr.left && e.clientX <= pr.right;
+    if (!inSection) return;
+    // exclude pilot area
+    if (pilotEl) {
+      var plr = pilotEl.getBoundingClientRect();
+      if (e.clientY >= plr.top && e.clientY <= plr.bottom) return;
+    }
+    dollarTick++;
+    if (dollarTick % 3 !== 0) return;
+    var el = document.createElement('div');
+    el.className = 'dollar-trail';
+    el.textContent = '💵';
+    var rot  = (Math.random()-0.5)*50;
+    var dx   = (Math.random()-0.5)*40;
+    el.style.setProperty('--rot',  rot+'deg');
+    el.style.setProperty('--rot2', (rot+25*(Math.random()>0.5?1:-1))+'deg');
+    el.style.setProperty('--dx',   dx+'px');
+    el.style.left = e.clientX+'px';
+    el.style.top  = e.clientY+'px';
+    document.body.appendChild(el);
+    setTimeout(function(){ el.remove(); }, 1700);
+  });
+
+  // ================================================================
+  // CAMPAIGN TITLE ANIMATION
+  // ================================================================
+  var titleEl = document.getElementById('campaign-title');
+  if (titleEl) {
+    var titleObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) {
+        if (en.isIntersecting && !titleEl.classList.contains('title-animated')) {
+          setTimeout(function(){ titleEl.classList.add('title-animated'); }, 300);
+        }
+      });
+    }, { threshold: 0.6 });
+    titleObs.observe(titleEl);
+  }
+
+})();
+</script>
+
+</body>
+</html>
