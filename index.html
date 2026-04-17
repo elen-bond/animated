@@ -649,54 +649,272 @@ html, body, * { cursor: none !important; }
 }
 
 
-/* ===== CAMPAIGN ANIMATED TITLE ===== */
-/* All text starts fully visible — animation overlays on scroll */
-#campaign-title .title-not {
-  display: inline;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
+/* ===== CAMPAIGN TITLE — static strikethrough ===== */
+#campaign-title .title-not { display: none; }
 #campaign-title .title-merch-swag {
   display: inline-block;
   position: relative;
   white-space: nowrap;
 }
-/* Strikethrough drawn by a real child span (not ::after) so scaleX is reliable */
 #campaign-title .strike-line {
   position: absolute;
-  left: 0;
+  left: -2px; right: -2px;
   top: 50%;
-  width: 100%;
   height: 4px;
   background: var(--black);
   border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: left center;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.8;
+}
+#campaign-title .bonds-word { display: inline; }
+
+/* ===== COMPLIANCE SECTION ===== */
+.compliance-section {
+  padding: 0;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+}
+.compliance-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 620px;
+  align-items: stretch;
+}
+
+/* LEFT: black hole panel */
+.compliance-visual {
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 620px;
+}
+
+/* Black hole — clickable button */
+.black-hole-btn {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: #000;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: transform 0.4s ease;
+  z-index: 5;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 0 30px 8px rgba(30,10,160,0.5),
+    0 0 70px 22px rgba(0,0,255,0.22),
+    0 0 150px 50px rgba(0,0,100,0.28),
+    inset 0 0 80px 30px rgba(0,0,0,1);
+  animation: bhGlow 5s ease-in-out infinite;
+}
+@keyframes bhGlow {
+  0%,100% {
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.05),
+      0 0 30px 8px rgba(30,10,160,0.5),
+      0 0 70px 22px rgba(0,0,255,0.22),
+      0 0 150px 50px rgba(0,0,100,0.28),
+      inset 0 0 80px 30px rgba(0,0,0,1);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.08),
+      0 0 45px 14px rgba(50,20,220,0.65),
+      0 0 100px 36px rgba(0,0,255,0.3),
+      0 0 210px 70px rgba(0,0,130,0.32),
+      inset 0 0 80px 30px rgba(0,0,0,1);
+  }
+}
+.black-hole-btn:hover {
+  transform: scale(1.05);
+}
+.bh-label {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+}
+.bh-label-top {
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+  display: block;
+  margin-bottom: 8px;
+}
+.bh-label-main {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  display: block;
+  line-height: 1.5;
+}
+
+/* Section label — top left of visual */
+.compliance-visual-label {
+  position: absolute;
+  top: 36px; left: 40px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  z-index: 10;
   pointer-events: none;
 }
-#campaign-title .bonds-word {
-  display: inline-block;
+
+/* Emoji suction particles */
+.bh-emoji-particle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 22px;
+  z-index: 9995;
+  animation: suckIn var(--dur) cubic-bezier(0.4, 0, 0.8, 1) var(--delay) forwards;
 }
-/* ── triggered ── */
-#campaign-title.title-animated .title-not {
-  opacity: 0;
-  transition: opacity 0.3s ease 0.1s;
+@keyframes suckIn {
+  0%   { opacity: 0.9; transform: translate(var(--sx), var(--sy)) rotate(var(--rot0)) scale(1); }
+  65%  { opacity: 0.6; transform: translate(calc(var(--sx)*0.18 + var(--cx0)), calc(var(--sy)*0.18 + var(--cy0))) rotate(var(--rot1)) scale(0.5); }
+  90%  { opacity: 0.2; transform: translate(0px, 0px) rotate(var(--rot2)) scale(0.08); }
+  100% { opacity: 0;   transform: translate(0px, 0px) rotate(var(--rot2)) scale(0); }
 }
-#campaign-title.title-animated .strike-line {
-  animation: strikeGrow 0.5s cubic-bezier(0.4,0,0.2,1) 0.35s forwards;
+
+/* RIGHT: quiz panel — same black universe */
+.compliance-quiz-panel {
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(0,0,255,0.15);
+  overflow: hidden;
+  position: relative;
 }
-@keyframes strikeGrow {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+.compliance-quiz-header {
+  padding: 36px 48px 28px;
+  border-bottom: 1px solid rgba(0,0,255,0.12);
+  flex-shrink: 0;
 }
-#campaign-title.title-animated .bonds-word {
-  animation: bondsLand 0.65s cubic-bezier(0.175,0.885,0.32,1.275) 1.0s forwards;
+.compliance-quiz-header .section-label {
+  margin-bottom: 8px;
+  color: var(--blue) !important;
 }
-@keyframes bondsLand {
-  0%   { transform: scale(1.9) translateY(-10px); opacity: 0.7; }
-  50%  { transform: scale(0.9) translateY(3px);  opacity: 1; }
-  75%  { transform: scale(1.05) translateY(-1px); }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
+.compliance-quiz-header p {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+  margin: 0;
+}
+.compliance-quiz-embed {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* ── Scoped quiz styles (prefixed with #bnd-quiz) ── */
+#bnd-quiz {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  color: #fff;
+  background: #000;
+  padding: 32px 40px 40px;
+}
+#bnd-quiz .bq-bar { display:flex; margin-bottom:28px; gap:4px; }
+#bnd-quiz .bq-bar-seg { flex:1; height:2px; background:#1e1e1e; transition:background .3s; }
+#bnd-quiz .bq-bar-seg.done   { background:#0000ff; }
+#bnd-quiz .bq-bar-seg.active { background:rgba(0,0,255,.4); }
+#bnd-quiz .bq-label { font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#0000ff; margin-bottom:10px; }
+#bnd-quiz .bq-text  { font-size:20px; font-weight:700; line-height:1.2; letter-spacing:-0.01em; margin-bottom:6px; color:#fff; }
+#bnd-quiz .bq-hint  { font-family:var(--sans); font-size:13px; color:#555; margin-bottom:24px; }
+#bnd-quiz .bq-opts  { display:flex; flex-direction:column; gap:6px; }
+#bnd-quiz .bq-opt {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:12px 16px; border:1px solid #1a1a1a; background:transparent;
+  text-align:left; cursor:pointer; color:#555; transition:all .14s; width:100%;
+  font-family:'Libre Baskerville', Georgia, serif;
+}
+#bnd-quiz .bq-opt:hover { border-color:rgba(0,0,255,.4); color:#fff; }
+#bnd-quiz .bq-opt.sel   { border-color:#0000ff; color:#fff; background:rgba(0,0,255,.08); }
+#bnd-quiz .bq-opt-ic  { font-size:16px; flex-shrink:0; margin-top:2px; }
+#bnd-quiz .bq-opt-lbl { font-size:13px; font-weight:700; display:block; margin-bottom:2px; color:inherit; }
+#bnd-quiz .bq-opt-desc{ font-family:var(--sans); font-size:11px; color:#444; display:block; line-height:1.4; }
+#bnd-quiz .bq-opt.sel .bq-opt-desc { color:#4040aa; }
+#bnd-quiz .bq-nav { display:flex; align-items:center; justify-content:space-between; margin-top:24px; padding-top:20px; border-top:1px solid #111; }
+#bnd-quiz .bq-back { font-family:var(--sans); font-size:12px; color:#444; background:none; border:none; cursor:pointer; padding:0; transition:color .14s; font-family:var(--sans); }
+#bnd-quiz .bq-back:hover { color:#fff; }
+#bnd-quiz .bq-next {
+  font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  background:#0000ff; color:#fff; border:1px solid #0000ff; padding:10px 24px;
+  cursor:pointer; transition:all .14s;
+}
+#bnd-quiz .bq-next:hover:not([disabled]) { background:#fff; color:#0000ff; }
+#bnd-quiz .bq-next[disabled] { opacity:.22; cursor:not-allowed; pointer-events:none; }
+/* email step */
+#bnd-quiz .bq-estep { text-align:center; padding:8px 0; }
+#bnd-quiz .bq-estep-ico { font-size:32px; margin-bottom:14px; }
+#bnd-quiz .bq-estep h3  { font-size:20px; font-weight:700; margin-bottom:8px; }
+#bnd-quiz .bq-estep p   { font-family:var(--sans); font-size:13px; color:#555; margin-bottom:22px; line-height:1.6; max-width:380px; margin-left:auto; margin-right:auto; }
+#bnd-quiz .bq-efield     { display:flex; gap:8px; max-width:400px; margin:0 auto 8px; }
+#bnd-quiz .bq-einput     { flex:1; background:#000; border:1px solid #1a1a1a; color:#fff; font-size:14px; padding:10px 14px; outline:none; font-family:'Libre Baskerville',Georgia,serif; transition:border-color .15s; }
+#bnd-quiz .bq-einput:focus { border-color:#0000ff; }
+#bnd-quiz .bq-einput::placeholder { color:#333; }
+#bnd-quiz .bq-einput.err { border-color:#ff4444; }
+#bnd-quiz .bq-esub { font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:#0000ff; color:#fff; border:1px solid #0000ff; padding:10px 18px; cursor:pointer; white-space:nowrap; transition:all .14s; }
+#bnd-quiz .bq-esub:hover { background:#fff; color:#0000ff; }
+#bnd-quiz .bq-eprivacy { font-family:var(--sans); font-size:10px; color:#333; margin-top:6px; text-align:center; }
+#bnd-quiz .bq-eskip { display:block; margin-top:14px; font-family:var(--sans); font-size:11px; color:#2a2a2a; cursor:pointer; background:none; border:none; width:100%; text-align:center; }
+#bnd-quiz .bq-eskip:hover { color:#555; }
+/* results */
+#bnd-quiz .bq-rbadge { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans); font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#0000ff; border:1px solid rgba(0,0,255,.3); padding:3px 10px; margin-bottom:12px; }
+#bnd-quiz .bq-rheader h3 { font-size:18px; font-weight:700; margin-bottom:6px; }
+#bnd-quiz .bq-rprofile { font-family:var(--sans); font-size:11px; color:#555; display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:20px; }
+#bnd-quiz .bq-rprofile strong { color:#fff; }
+#bnd-quiz .bq-rcards { display:flex; flex-direction:column; gap:1px; margin-bottom:20px; }
+#bnd-quiz .bq-rcard { border:1px solid rgba(255,255,255,.07); overflow:hidden; }
+#bnd-quiz .bq-rcard-h { display:flex; align-items:center; gap:10px; padding:11px 16px; background:#080808; border-bottom:1px solid rgba(255,255,255,.05); flex-wrap:wrap; gap:8px; }
+#bnd-quiz .bq-rstatus { font-family:var(--sans); font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 8px; flex-shrink:0; }
+#bnd-quiz .bq-s-ok   { background:rgba(0,200,80,.1);  color:#00c850; border:1px solid rgba(0,200,80,.2); }
+#bnd-quiz .bq-s-note { background:rgba(0,0,255,.1);   color:#5555ff; border:1px solid rgba(0,0,255,.2); }
+#bnd-quiz .bq-s-caut { background:rgba(255,180,0,.1); color:#ffb400; border:1px solid rgba(255,180,0,.2); }
+#bnd-quiz .bq-s-rest { background:rgba(255,60,60,.1); color:#ff4444; border:1px solid rgba(255,60,60,.2); }
+#bnd-quiz .bq-s-exem { background:rgba(0,220,120,.1); color:#00dc78; border:1px solid rgba(0,220,120,.2); }
+#bnd-quiz .bq-rcard-title { font-family:var(--sans); font-size:12px; font-weight:700; color:#fff; flex:1; min-width:0; }
+#bnd-quiz .bq-rcard-limit { font-family:'Libre Baskerville',Georgia,serif; font-size:16px; font-weight:700; color:#0000ff; flex-shrink:0; }
+#bnd-quiz .bq-rcard-body  { padding:14px 16px; font-family:var(--sans); font-size:12px; color:#666; line-height:1.7; }
+#bnd-quiz .bq-rcard-body strong { color:#fff; }
+#bnd-quiz .bq-rcard-body ul { list-style:none; margin-top:6px; display:flex; flex-direction:column; gap:4px; }
+#bnd-quiz .bq-rcard-body li { padding-left:14px; position:relative; }
+#bnd-quiz .bq-rcard-body li::before { content:'→'; position:absolute; left:0; color:#0000ff; font-size:9px; top:4px; }
+#bnd-quiz .bq-rlinks { display:flex; flex-wrap:wrap; gap:5px; margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,.05); }
+#bnd-quiz .bq-rlink { font-family:var(--sans); font-size:10px; font-weight:600; color:#0000ff; border:1px solid rgba(0,0,255,.25); padding:2px 8px; text-decoration:none; transition:all .12s; letter-spacing:.02em; }
+#bnd-quiz .bq-rlink:hover { background:#0000ff; color:#fff; border-color:#0000ff; }
+#bnd-quiz .bq-rcta { border:1px solid rgba(255,255,255,.06); padding:22px; background:#060606; text-align:center; }
+#bnd-quiz .bq-rcta h4 { font-size:16px; font-weight:700; margin-bottom:6px; }
+#bnd-quiz .bq-rcta p  { font-family:var(--sans); font-size:12px; color:#555; margin-bottom:16px; line-height:1.6; }
+#bnd-quiz .bq-rcta a  { display:inline-block; font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; background:#0000ff; color:#fff; text-decoration:none; border:1px solid #0000ff; padding:10px 22px; transition:all .14s; }
+#bnd-quiz .bq-rcta a:hover { background:#fff; color:#0000ff; border-color:#fff; }
+#bnd-quiz .bq-rrestart { display:block; text-align:center; margin-top:12px; font-family:var(--sans); font-size:11px; color:#2a2a2a; background:none; border:none; cursor:pointer; width:100%; }
+#bnd-quiz .bq-rrestart:hover { color:#555; }
+
+@media (max-width: 900px) {
+  .compliance-inner { grid-template-columns: 1fr; }
+  .compliance-visual { min-height: 360px; }
+  .black-hole-btn { width: 200px; height: 200px; }
+  .compliance-quiz-header { padding: 28px 24px 20px; }
+  #bnd-quiz { padding: 24px; }
 }
 
 </style>
@@ -980,6 +1198,40 @@ html, body, * { cursor: none !important; }
   </div>
 </section>
 
+<!-- COMPLIANCE GUIDE -->
+<section class="compliance-section" id="compliance">
+  <div class="compliance-inner">
+    <!-- LEFT: black hole button -->
+    <div class="compliance-visual" id="complianceVisual">
+      <div class="compliance-visual-label">U.S. Business Gifting Rules</div>
+      <a href="https://compliance-lac.vercel.app/" target="_blank" class="black-hole-btn" id="blackHoleBtn">
+        <div class="bh-label">
+          <span class="bh-label-top">no escape</span>
+          <span class="bh-label-main">compliance<br>guide</span>
+        </div>
+      </a>
+    </div>
+    <!-- RIGHT: native quiz -->
+    <div class="compliance-quiz-panel">
+      <div class="compliance-quiz-header">
+        <div class="section-label">Compliance Quiz</div>
+        <p>Answer 4 questions. Get the exact gift limits for your business, recipient type, and budget.</p>
+      </div>
+      <div class="compliance-quiz-embed">
+        <div id="bnd-quiz">
+          <div class="bq-bar">
+            <div class="bq-bar-seg active"></div>
+            <div class="bq-bar-seg"></div>
+            <div class="bq-bar-seg"></div>
+            <div class="bq-bar-seg"></div>
+          </div>
+          <div id="bnd-qinner"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="container">
@@ -1087,11 +1339,12 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
     ['.hero',         '🏛️'],
     ['.manifesto',    '🤝'],
     ['.use-cases',    '🤝'],
-    ['.e2e-strip',    '🚲'],
+    ['.e2e-strip',    '🛵'],
     ['.campaigns',    '🤝'],
     ['.how-section',  '🏛️'],
     ['.scope-section','🤝'],
     ['.pricing',      '💵'],
+    ['.compliance-section','🎁'],
     ['.audience',     '🤝'],
     ['.cta-section',  '🤙'],
   ];
@@ -1169,7 +1422,83 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
     });
   }
 
-  // ─── NAV CTA ─────────────────────────────────────────────────
+  // ─── BLACK HOLE BUTTON cursor ────────────────────────────────
+  var bhBtn = document.getElementById('blackHoleBtn');
+  if (bhBtn) {
+    bhBtn.addEventListener('mouseenter', function() { setCursor('⚫'); });
+    bhBtn.addEventListener('mouseleave', restore);
+  }
+
+  // ─── COMPLIANCE SECTION: emoji suction on hover ───────────────
+  var complianceVisual = document.getElementById('complianceVisual');
+  var siteEmojis = ['🎁'];
+  var suckTimer = null;
+  var suckActive = false;
+
+  function spawnSuckEmoji() {
+    if (!complianceVisual) return;
+    var r = complianceVisual.getBoundingClientRect();
+    var cx = r.left + r.width / 2;
+    var cy = r.top  + r.height / 2;
+
+    // spawn from a random edge of the panel
+    var angle = Math.random() * Math.PI * 2;
+    var radius = Math.min(r.width, r.height) * 0.5 + 20 + Math.random() * 60;
+    var sx = Math.cos(angle) * radius;
+    var sy = Math.sin(angle) * radius;
+
+    // spiral offset at ~70% of the way in — gives a curved feel
+    var spiralAngle = angle + (Math.random() > 0.5 ? 0.9 : -0.9);
+    var spiralR = radius * 0.32;
+    var cx0 = Math.cos(spiralAngle) * spiralR;
+    var cy0 = Math.sin(spiralAngle) * spiralR;
+
+    var em = siteEmojis[Math.floor(Math.random() * siteEmojis.length)];
+    var el = document.createElement('div');
+    el.className = 'bh-emoji-particle';
+    el.textContent = em;
+    var dur = (1.4 + Math.random() * 1.1).toFixed(2) + 's';
+    var delay = (Math.random() * 0.3).toFixed(2) + 's';
+    var rot0 = Math.round(Math.random() * 60 - 30) + 'deg';
+    var rot1 = Math.round(Math.random() * 360) + 'deg';
+    var rot2 = Math.round(Math.random() * 720) + 'deg';
+    el.style.cssText = [
+      'left:' + cx + 'px',
+      'top:' + cy + 'px',
+      '--sx:' + sx.toFixed(1) + 'px',
+      '--sy:' + sy.toFixed(1) + 'px',
+      '--cx0:' + cx0.toFixed(1) + 'px',
+      '--cy0:' + cy0.toFixed(1) + 'px',
+      '--rot0:' + rot0,
+      '--rot1:' + rot1,
+      '--rot2:' + rot2,
+      '--dur:' + dur,
+      '--delay:' + delay,
+    ].join(';');
+    document.body.appendChild(el);
+    var totalMs = (parseFloat(dur) + parseFloat(delay)) * 1000 + 100;
+    setTimeout(function() { el.remove(); }, totalMs);
+  }
+
+  if (complianceVisual) {
+    complianceVisual.addEventListener('mouseenter', function() {
+      if (suckActive) return;
+      suckActive = true;
+      spawnSuckEmoji();
+      suckTimer = setInterval(function() {
+        spawnSuckEmoji();
+        if (Math.random() > 0.55) spawnSuckEmoji(); // occasional double-spawn
+      }, 280);
+    });
+    complianceVisual.addEventListener('mouseleave', function() {
+      suckActive = false;
+      clearInterval(suckTimer);
+      suckTimer = null;
+      restore();
+    });
+  }
+
+
   var navCta = document.querySelector('.nav-cta');
   if (navCta) {
     navCta.addEventListener('mouseenter', function(){ setCursor('🏛️'); });
@@ -1345,24 +1674,202 @@ Cal("init", "issue-a-bond", {origin:"https://app.cal.com"});
     setTimeout(function(){ el.remove(); }, 1700);
   });
 
-  // ================================================================
-  // CAMPAIGN TITLE ANIMATION
-  // ================================================================
-  var titleEl = document.getElementById('campaign-title');
-  if (titleEl) {
-    var titleTriggered = false;
-    var titleObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(en) {
-        if (en.isIntersecting && !titleTriggered) {
-          titleTriggered = true;
-          titleObs.disconnect();
-          setTimeout(function(){ titleEl.classList.add('title-animated'); }, 150);
-        }
-      });
-    }, { threshold: 0.2 });
-    titleObs.observe(titleEl);
-  }
 
+  // ================================================================
+  // EMBEDDED COMPLIANCE QUIZ
+  // ================================================================
+  (function() {
+    var BQ = { step:0, ans:{} };
+    var BSTEPS = [
+      { id:'sender', label:'Question 1 of 4', q:'What type of company are you?', hint:'This determines which outbound gifting rules apply.',
+        opts:[
+          { id:'startup', ic:'🚀', l:'Startup / Tech Company',       d:'Founder gifting to investors, partners, or leads' },
+          { id:'vc',      ic:'📊', l:'VC / PE / Investment Fund',    d:'Fund-level investor relations or deal flow gifting' },
+          { id:'finance', ic:'🏦', l:'Financial Institution / BD',   d:'Bank, brokerage, investment bank, FINRA member firm' },
+          { id:'service', ic:'💼', l:'Service Provider',             d:'Law firm, consulting, accounting, advisory, agency' }
+        ]
+      },
+      { id:'recipient', label:'Question 2 of 4', q:'Who are you gifting to?', hint:'The recipient type determines which framework applies.',
+        opts:[
+          { id:'prospect',  ic:'🎯', l:'Prospects / Cold Leads',          d:"People you're trying to start a conversation with" },
+          { id:'client',    ic:'🤝', l:'Existing Clients or Partners',    d:'Relationships you want to deepen or retain' },
+          { id:'investor',  ic:'💰', l:'Current Investors / LPs',         d:'Investors already in your cap table or fund' },
+          { id:'prosp_inv', ic:'🌱', l:'Prospective Investors',           d:"People you're hoping to bring into your fund" },
+          { id:'inst',      ic:'🏢', l:'Financial Counterparty',          d:'Employee of a bank, fund, or regulated institution' },
+          { id:'regulated', ic:'⚠️', l:'Government or Healthcare Pro',   d:'Federal employee, physician, or other regulated recipient' }
+        ]
+      },
+      { id:'value', label:'Question 3 of 4', q:'Gift budget per person?', hint:'This determines which dollar thresholds are triggered.',
+        opts:[
+          { id:'v25',   ic:'🎁', l:'Under $25',   d:'Branded items, small curated gifts' },
+          { id:'v100',  ic:'✨', l:'$25 – $100',  d:'Premium branded goods, curated gift boxes' },
+          { id:'v300',  ic:'🌟', l:'$100 – $300', d:'High-quality custom gifts, experience kits' },
+          { id:'v300p', ic:'🏆', l:'Over $300',   d:'Deal tombstones, high-value commemoratives' }
+        ]
+      },
+      { id:'occasion', label:'Question 4 of 4', q:'What is the occasion?', hint:'Some occasions unlock full exemptions from standard limits.',
+        opts:[
+          { id:'outreach',  ic:'📬', l:'Cold Outreach / Prospecting',    d:'Opening new relationships from scratch' },
+          { id:'holiday',   ic:'🎄', l:'Holiday / Year-End',             d:'Seasonal appreciation' },
+          { id:'deal',      ic:'📋', l:'Deal or Transaction Close',      d:'Celebrating a closed deal or fundraise' },
+          { id:'fundraise', ic:'💸', l:'Fundraising / Investor Outreach',d:'Part of a fund raise' },
+          { id:'milestone', ic:'🎉', l:'Business Milestone',             d:'Funding round, IPO, renewal' },
+          { id:'personal',  ic:'💍', l:'Personal Life Event',            d:'Wedding, birth, retirement' },
+          { id:'bereave',   ic:'🌸', l:'Bereavement',                    d:'In response to a death or loss' }
+        ]
+      }
+    ];
+
+    function bqUpdateBar() {
+      var segs = document.querySelectorAll('#bnd-quiz .bq-bar-seg');
+      segs.forEach(function(s,i) {
+        s.className = 'bq-bar-seg';
+        if (i < BQ.step) s.classList.add('done');
+        else if (i === BQ.step) s.classList.add('active');
+      });
+    }
+
+    function bqRender() {
+      bqUpdateBar();
+      var el = document.getElementById('bnd-qinner');
+      if (!el) return;
+      if (BQ.step <= 3) bqRenderQ(el);
+      else if (BQ.step === 4) bqRenderEmail(el);
+      else bqRenderResults(el);
+    }
+
+    function bqRenderQ(el) {
+      var s = BSTEPS[BQ.step];
+      var sel = BQ.ans[s.id] || '';
+      var optsHtml = s.opts.map(function(o) {
+        return '<button type="button" class="bq-opt'+(sel===o.id?' sel':'')+'" data-sid="'+s.id+'" data-val="'+o.id+'" onclick="bqPick(this)">'
+          +'<span class="bq-opt-ic">'+o.ic+'</span>'
+          +'<span><span class="bq-opt-lbl">'+o.l+'</span><span class="bq-opt-desc">'+o.d+'</span></span>'
+          +'</button>';
+      }).join('');
+      el.innerHTML = '<div class="bq-label">'+s.label+'</div>'
+        +'<div class="bq-text">'+s.q+'</div>'
+        +'<div class="bq-hint">'+s.hint+'</div>'
+        +'<div class="bq-opts">'+optsHtml+'</div>'
+        +'<div class="bq-nav">'
+        +(BQ.step>0?'<button type="button" class="bq-back" onclick="bqBack()">← Back</button>':'<span></span>')
+        +'<button type="button" class="bq-next" id="bq-nxt" onclick="bqNext()"'+(sel?'':' disabled')+'>'
+        +(BQ.step===3?'Get My Results →':'Continue →')
+        +'</button></div>';
+    }
+
+    window.bqPick = function(btn) {
+      var sid = btn.getAttribute('data-sid');
+      var val = btn.getAttribute('data-val');
+      BQ.ans[sid] = val;
+      btn.parentElement.querySelectorAll('.bq-opt').forEach(function(b){ b.classList.remove('sel'); });
+      btn.classList.add('sel');
+      var nb = document.getElementById('bq-nxt');
+      if (nb) nb.removeAttribute('disabled');
+    };
+    window.bqNext = function() {
+      if (!BQ.ans[BSTEPS[BQ.step].id]) return;
+      BQ.step++; bqRender();
+    };
+    window.bqBack = function() {
+      if (BQ.step>0) { BQ.step--; bqRender(); }
+    };
+
+    function bqRenderEmail(el) {
+      el.innerHTML = '<div class="bq-estep">'
+        +'<div class="bq-estep-ico">📋</div>'
+        +'<h3>Get your compliance<br>profile by email</h3>'
+        +'<p>We\'ll send your personalized results plus the full compliance guide.</p>'
+        +'<div class="bq-efield">'
+        +'<input type="email" class="bq-einput" id="bq-emi" placeholder="you@company.com" />'
+        +'<button type="button" class="bq-esub" onclick="bqSubmitEmail()">Send results</button>'
+        +'</div>'
+        +'<p class="bq-eprivacy">No spam. Unsubscribe anytime.</p>'
+        +'<button type="button" class="bq-eskip" onclick="bqShowResults()">Skip — just show me the results</button>'
+        +'</div>'
+        +'<div class="bq-nav" style="margin-top:20px">'
+        +'<button type="button" class="bq-back" onclick="bqBack()">← Back</button>'
+        +'<span></span></div>';
+    }
+
+    window.bqSubmitEmail = function() {
+      var inp = document.getElementById('bq-emi');
+      var v = inp ? inp.value.trim() : '';
+      if (!v || !/\S+@\S+\.\S+/.test(v)) {
+        if (inp) { inp.classList.add('err'); inp.focus(); }
+        return;
+      }
+      bqShowResults();
+    };
+    window.bqShowResults = function() { BQ.step=5; bqRender(); };
+
+    function bqBuildCards() {
+      var s=BQ.ans.sender, r=BQ.ans.recipient, v=BQ.ans.value, o=BQ.ans.occasion;
+      var over25=(v==='v100'||v==='v300'||v==='v300p');
+      var over300=(v==='v300p');
+      var cards=[];
+      var isPersonal=(o==='personal'||o==='bereave');
+      if(isPersonal){ cards.push({cls:'bq-s-exem',sl:'✓ Personal Event Exemption',t:'Personal / Bereavement Gift',lim:'Exempt',b:'<strong>Personal life events</strong> (wedding, birth, retirement, bereavement) are explicitly exempt from FINRA Rule 3220 when paid personally. No dollar limit applies. Document as personal, not business.',links:[{t:'FINRA RN 26-05',u:'https://www.finra.org/rules-guidance/notices/26-05'}]}); return cards; }
+      if(o==='deal'&&over300){ cards.push({cls:'bq-s-exem',sl:'✓ Deal Toy Exempt',t:'Transaction Commemorative (Deal Toy)',lim:'No Limit',b:'<strong>Deal toys are explicitly exempt</strong> under the 2026 FINRA Rule 3220 amendment — no dollar cap, no recordkeeping required. Must be customary, solely decorative, and commemorate a closed transaction.',links:[{t:'FINRA RN 26-05',u:'https://www.finra.org/rules-guidance/notices/26-05'}]}); return cards; }
+      if(s==='finance'){
+        if(r==='inst'||r==='prospect'||r==='client'){
+          cards.push({cls:over300?'bq-s-rest':'bq-s-ok',sl:over300?'⚠ Over Limit':'✓ Compliant',t:'FINRA Rule 3220 (eff. Mar 30, 2026)',lim:'$300/year',b:'As a FINRA member, gifts to employees of institutional customers are subject to the <strong>$300 annual limit per recipient</strong> (updated from $100 in March 2026). This is an <em>aggregate</em> limit across your entire firm. Retail investors are excluded from Rule 3220 entirely under the 2026 amendment.',links:[{t:'FINRA RN 26-05',u:'https://www.finra.org/rules-guidance/notices/26-05'},{t:'FINRA Rule 3220',u:'https://www.finra.org/rules-guidance/rulebooks/finra-rules/3220'}]});
+        }
+        if(r==='investor'||r==='prosp_inv'){
+          cards.push({cls:'bq-s-ok',sl:'✓ Rule 3220.09 Exclusion',t:'Retail Investor — FINRA Rule 3220.09',lim:'No FINRA limit',b:'<strong>Rule 3220.09 (2026) explicitly excludes retail investors</strong> from FINRA Rule 3220. Your firm\'s own Code of Ethics governs. Regulation Best Interest (Reg BI) and anti-fraud provisions still apply.',links:[{t:'FINRA Rule 3220.09',u:'https://www.finra.org/rules-guidance/notices/26-05'}]});
+        }
+      }
+      if(s==='vc'){
+        if(r==='investor'||r==='prosp_inv'){
+          cards.push({cls:over300?'bq-s-caut':'bq-s-ok',sl:r==='prosp_inv'?'⚠ Anti-Fraud Applies':'✓ Permitted',t:'Investment Advisers Act — Fiduciary Standard',lim:'~$250 industry norm',b:'No hard SEC dollar limit. Industry standard is ~$250/year. '+(r==='prosp_inv'?'<strong>Fundraising context:</strong> gifts to prospective LPs cannot be structured as inducements to invest. The gift and the ask must be clearly separate.':'Document all gifts in your compliance log. Include your gift policy in Form ADV.'),links:[{t:'Advisers Act §206',u:'https://www.sec.gov/investment/im-guidance-2015-01.pdf'}]});
+        }
+        if(r==='prospect'||r==='client'){
+          cards.push({cls:'bq-s-ok',sl:'✓ No Regulatory Cap',t:'General Business Gifting',lim:'$25 deductible',b:'No federal regulatory cap on physical gift value for general business contacts. IRS deduction is $25/person/year — amounts above are non-deductible but not prohibited. Document the business purpose.',links:[{t:'IRS Pub 463',u:'https://www.irs.gov/publications/p463'}]});
+        }
+      }
+      if(s==='startup'||s==='service'){
+        if(r==='prospect'||r==='client'){
+          cards.push({cls:'bq-s-ok',sl:'✓ No Federal Limit',t:'General Business Gifting',lim:'$25 deductible',b:'<strong>No federal regulatory cap</strong> applies to physical gifts from tech companies or service providers to clients and prospects. IRS deduction is $25/recipient/year. The gift must be unconditional — never tied to a purchase or contract.',links:[{t:'IRS Pub 463',u:'https://www.irs.gov/publications/p463'}]});
+        }
+        if(r==='investor'||r==='prosp_inv'){
+          cards.push({cls:r==='prosp_inv'?'bq-s-caut':'bq-s-ok',sl:r==='prosp_inv'?'⚠ Keep Unconditional':'✓ Permitted',t:r==='prosp_inv'?'Prospective Investor Gifting':'Investor / LP Gifting',lim:'~$250 practical standard',b:r==='prosp_inv'?'Gifting to prospective investors during a fundraise is legal — but it must not be structured as an inducement to invest. Physical gifts under $100 before any formal ask is conservative best practice.':'Gifting to existing investors is standard practice. Conservative guideline: under $250. Document the occasion and business purpose.',links:[{t:'SEC Anti-Fraud (§206)',u:'https://www.sec.gov/investment/im-guidance-2015-01.pdf'}]});
+        }
+        if(r==='inst'){
+          cards.push({cls:over300?'bq-s-rest':'bq-s-ok',sl:'⚠ Check Recipient Policy',t:'Gifts to Employees of Financial Institutions',lim:"Recipient's rules govern",b:'When gifting to an employee of a bank or broker-dealer, their firm\'s internal policy applies — likely based on FINRA Rule 3220 ($300/year limit as of March 2026). Confirm the recipient\'s employer permits acceptance before sending.',links:[{t:'FINRA Rule 3220',u:'https://www.finra.org/rules-guidance/rulebooks/finra-rules/3220'}]});
+        }
+      }
+      if(r==='regulated'){
+        cards.push({cls:over25?'bq-s-rest':'bq-s-caut',sl:'⚠ Highly Restricted',t:'Government & Healthcare — Special Rules Apply',lim:'$20–$489 depending',b:'<strong>Federal employees:</strong> $20/occasion, $50/year (5 CFR §2635). Any gift tied to an official act is prohibited regardless of value.<br><br><strong>Healthcare:</strong> Anti-Kickback Statute prohibits gifts that could induce Medicare/Medicaid referrals. Stark Law allows physical gifts up to ~$489/year under strict conditions. Bond &amp; Beyond recommends legal review before any campaign targeting physicians.',links:[{t:'5 CFR 2635',u:'https://www.ecfr.gov/current/title-5/chapter-XVI/subchapter-B/part-2635'},{t:'OIG Fraud Laws',u:'https://oig.hhs.gov/compliance/physician-education/fraud-abuse-laws/'}]});
+      }
+      if(!cards.length){
+        cards.push({cls:'bq-s-note',sl:'ℹ General Guidance',t:'General Business Gifting',lim:'$25 deductible',b:'No specific federal regulatory cap applies to this combination. IRS deduction is $25/recipient/year. Always keep gifts unconditional — never tied to a business action. Document the purpose.',links:[{t:'IRS Pub 463',u:'https://www.irs.gov/publications/p463'}]});
+      }
+      return cards;
+    }
+
+    var BSLABELS={startup:'Startup / Tech',vc:'VC / PE Fund',finance:'Financial Institution',service:'Service Provider'};
+    var BRLABELS={prospect:'Prospects',client:'Existing Clients',investor:'Current Investors',prosp_inv:'Prospective Investors',inst:'Financial Counterparty',regulated:'Gov / Healthcare'};
+
+    function bqRenderResults(el) {
+      var cards=bqBuildCards();
+      var s=BQ.ans.sender,r=BQ.ans.recipient;
+      var cardsHtml=cards.map(function(c){
+        var lh=(c.links||[]).map(function(l){return '<a href="'+l.u+'" target="_blank" class="bq-rlink">↗ '+l.t+'</a>';}).join('');
+        return '<div class="bq-rcard"><div class="bq-rcard-h"><span class="bq-rstatus '+c.cls+'">'+c.sl+'</span><span class="bq-rcard-title">'+c.t+'</span><span class="bq-rcard-limit">'+c.lim+'</span></div><div class="bq-rcard-body">'+c.b+'<div class="bq-rlinks">'+lh+'</div></div></div>';
+      }).join('');
+      el.innerHTML='<div class="bq-rheader">'
+        +'<div class="bq-rbadge">✓ Compliance Profile Generated</div>'
+        +'<h3>Your gifting rules</h3>'
+        +'<div class="bq-rprofile"><strong>'+(BSLABELS[s]||s)+'</strong><span> → </span><strong>'+(BRLABELS[r]||r)+'</strong></div>'
+        +'</div>'
+        +'<div class="bq-rcards">'+cardsHtml+'</div>'
+        +'<div class="bq-rcta"><h4>Want the full compliance guide?</h4><p>Covering all industries, use cases, and the 2026 regulatory changes.</p><a href="https://compliance-lac.vercel.app/" target="_blank">Read the full guide →</a></div>'
+        +'<button type="button" class="bq-rrestart" onclick="bqReset()">↺ Start over</button>';
+    }
+
+    window.bqReset = function() { BQ={step:0,ans:{}}; bqRender(); };
+    bqRender();
+  })();
 })();
 </script>
 
